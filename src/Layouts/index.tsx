@@ -1,1 +1,3 @@
-export { default as PageLayout } from '@layouts/PageLayout'
+export { default as Main } from '@layouts/Main'
+export { default as Auth } from '@layouts/Auth'
+export { default as Profile } from '@layouts/Profile'

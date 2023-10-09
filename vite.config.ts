@@ -8,9 +8,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@src': path.resolve(__dirname, './src'),
-      '@routes': path.resolve(__dirname, './src/Routes'),
-      '@components': path.resolve(__dirname, './src/Components'),
-      '@layouts': path.resolve(__dirname, './src/Layouts'),
+      '@routes': path.resolve(__dirname, './src/routes'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@layouts': path.resolve(__dirname, './src/layouts'),
+      '@pages': path.resolve(__dirname, './src/pages'),
     },
   },
   plugins: [react()],

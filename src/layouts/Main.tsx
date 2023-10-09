@@ -1,8 +1,7 @@
-import React from 'react'
 import { Outlet } from 'react-router-dom'
 import * as Components from '@components'
 
-const PageLayout = () => {
+const Main = () => {
   return (
     <div>
       <Components.Header />
@@ -12,4 +11,4 @@ const PageLayout = () => {
   )
 }
 
-export default PageLayout
+export default Main

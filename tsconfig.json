@@ -22,12 +22,13 @@
 
     "baseUrl": "./",
     "paths": {
-      "@src/*": ["src/*"],
-      "@routes/*": ["src/Routes/*"],
-      "@components/*": ["src/Components/*"],
-      "@components": ["src/Components/"],
+      "@routes/*": ["src/routes/*"],
+      "@components/*": ["src/components/*"],
+      "@components": ["src/components"],
       "@layouts/*": ["src/layouts/*"],
-      "@layouts": ["src/layouts/"]
+      "@layouts": ["src/layouts"],
+      "@pages/*": ["src/pages/*"],
+      "@pages": ["src/pages"]
     }
   },
   "include": ["src"],

@@ -1,7 +1,26 @@
-import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
-  return <div>Header</div>
+  return (
+    <header className='flex justify-between items-center'>
+      <div className='flex justify-start items-center'>
+        <Link className='p-4' to='.'>
+          Logo
+        </Link>
+        <Link className='p-4' to='products'>
+          Products
+        </Link>
+      </div>
+      <div className='flex justify-end items-center flex-row'>
+        <Link className='p-4' to='basket'>
+          Basket
+        </Link>
+        <Link className='p-4' to='profile'>
+          Profile
+        </Link>
+      </div>
+    </header>
+  )
 }
 
 export default Header
