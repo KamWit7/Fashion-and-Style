@@ -76,8 +76,7 @@ const getVariantClasses = (variant: Variants): TagProps => {
       }
     case 'p1':
       return {
-        classes:
-          'text-20 md:text-32 font-sans tracking-wide md:tracking-paragraph',
+        classes: 'text-20 md:text-32 font-montserrat', // +
         tag: 'p',
       }
     case 'p2':
@@ -90,6 +89,8 @@ const getVariantClasses = (variant: Variants): TagProps => {
       return { classes: 'text-14 font-sans', tag: 'p' }
     case 'label2':
       return { classes: 'text-8 font-sans', tag: 'p' }
+    default:
+      return { tag: 'p', classes: '' }
   }
 }
 
