@@ -1,13 +1,17 @@
 import { Outlet } from 'react-router-dom'
-import * as Components from '@components'
+import { Header, Footer, Center } from '@components'
 
 const Main = () => {
   return (
-    <div>
-      <Components.Header />
+    <>
+      <Center>
+        <Header />
+      </Center>
       <Outlet />
-      <Components.Footer />
-    </div>
+      <Center>
+        <Footer />
+      </Center>
+    </>
   )
 }
 

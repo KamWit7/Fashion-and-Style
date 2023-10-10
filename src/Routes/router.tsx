@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Pages.LandingPage />,
+        element: <Pages.Landing />,
       },
       { path: 'login', element: <Pages.Login /> },
       { path: 'register', element: <>a</> },

@@ -16,7 +16,7 @@ const Header = () => {
           Basket
         </Link>
         <Link className='p-4' to='profile'>
-          Profile
+          <span className='font-montserrat text-xl font-bold'>Profile</span>
         </Link>
       </div>
     </header>

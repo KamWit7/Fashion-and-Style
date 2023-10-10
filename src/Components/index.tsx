@@ -1,2 +1,5 @@
 export { default as Header } from '@components/Header'
 export { default as Footer } from '@components/Footer'
+export { default as Center } from '@components/Center'
+export { default as Text } from '@components/Text'
+export { default as FullScreenImg } from '@components/FullScreenImg'
