@@ -1,7 +1,26 @@
-import Button from '@components/Button'
-import Center from '@components/Center'
-import FullScreenImg from '@components/FullScreenImg'
-import Text from '@components/Text'
+import {
+  Text,
+  Section,
+  Center,
+  Button,
+  FullScreenImg,
+  ProductCard,
+  Slider,
+} from '@components'
+
+const productInfo = {
+  uid: 1,
+  img: 'https://s3-alpha-sig.figma.com/img/2a1b/ae81/2e81613b401c4689b9ced6df9a3b631a?Expires=1698019200&Signature=YwCCiXLgx-MxfTOkdqcYKv8wODGFJUd2sFvgspjtYoOU~mfgxTpen0ODBljSVHFZh8HZY8fsMTIbaMmHRbqFxs07xeMnUYduBHDkUolClJw8~6bMRs4peygyo08AtuC5zgaHKclDLw-H8B3RgZaWtlNre~7WWfK7LOQKHSVYHDHQfTDIc8XvuTEy6USJkumFHJ3V43JUZripBGawNX1Ab4woY4HJZ7rBG0euQIqp2aDit4nKos--9vraUSLTxGjuuWs4zRJG1k2CwxAvQUrDqyIJgmYNonU2u8atBOBKmaQUdHN7Dqyyc9806bEdnNWvYyrjNpgTiQVd835x739gTQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+  color: 'bg-black',
+  collection: '',
+  title: 'Tailored Stretch',
+  subtitle: 'Turn it Up Pants',
+  price: 180,
+
+  variants: ['bg-black ', 'bg-blue-600', 'bg-pink-500'],
+}
+
+
 
 const Landing = () => {
   return (
@@ -13,15 +32,35 @@ const Landing = () => {
         alt='some img'>
         <Center bg='bg-transparent'>
           <div className='mb-32'>
-            <Text variant='p1' className='italic mb-7'>
+            <Text variant='p1' className='italic mb-7 capitalize font-cabin'>
               Elegance in simplicity, <br /> Earth’s harmony
             </Text>
-            <Button element='a' href='asd'>
-              New in
-            </Button>
+            <Button>New in</Button>
           </div>
         </Center>
       </FullScreenImg>
+      <Center>
+        <Section
+          title='Best Sellers'
+          classChildren='flex justify-between items-center space-x-4'>
+          <Slider>
+            {[
+              productInfo,
+              productInfo,
+              productInfo,
+              productInfo,
+              productInfo,
+              productInfo,
+            ].map((p, idx) => (
+              <ProductCard key={idx} {...p} />
+            ))}
+          </Slider>
+        </Section>
+
+        <Section title='Collection'>img</Section>
+        <Section title='Modiweek'>Carusele</Section>
+        <Section title='Follow Us @F&S'>img</Section>
+      </Center>
     </div>
   )
 }

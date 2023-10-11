@@ -1,5 +1,5 @@
-import classNames from 'classnames'
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 interface CenterProps {
   className?: string
@@ -12,7 +12,7 @@ const Center = ({
   bg,
 }: React.PropsWithChildren<CenterProps>) => {
   return (
-    <section className={classNames(bg || 'bg-white', 'px-28', className)}>
+    <section className={twMerge(bg || 'bg-white', 'px-28', className)}>
       <div className='mx-auto max-w-6xl'>{children}</div>
     </section>
   )
