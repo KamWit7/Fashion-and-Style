@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router-dom'
 import * as Layouts from '@layouts'
 import * as Pages from '@pages'
 
+import './../server'
+
 const protectedRoutes = {
   element: <Layouts.Auth />,
   children: [

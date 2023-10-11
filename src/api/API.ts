@@ -1,9 +1,6 @@
 export const API = {
-  getProducts: async (body?: { bestseler: boolean }) => {
-    const res = await fetch('/products', {
-      method: 'get',
-      body: JSON.stringify(body),
-    })
+  getProducts: async () => {
+    const res = await fetch('/api/products')
     if (!res.ok) {
       throw {
         message: 'Failed to fetch products',
