@@ -53,8 +53,7 @@ const getVariantClasses = (variant: Variants): TagProps => {
       }
     case 'h3':
       return {
-        classes:
-          'text-32 md:text-48 font-heading tracking-paragraph font-medium',
+        classes: 'text-20 md:text-32 font-bold', // +
         tag: 'h3',
       }
     case 'h4':
@@ -70,8 +69,7 @@ const getVariantClasses = (variant: Variants): TagProps => {
       }
     case 'h6':
       return {
-        classes:
-          'text-20 md:text-24 font-heading tracking-paragraph font-medium',
+        classes: 'text-14 md:text-16 font-montserrat font-bold',
         tag: 'h6',
       }
     case 'p1':
@@ -84,7 +82,10 @@ const getVariantClasses = (variant: Variants): TagProps => {
     case 'b1':
       return { classes: 'text-16 md:text-20 font-sans tracking-wide', tag: 'p' }
     case 'b2':
-      return { classes: 'text-14 md:text-16 font-sans tracking-wide', tag: 'p' }
+      return {
+        classes: 'text-14 md:text-16 font-montserrat font-normal',
+        tag: 'p',
+      } // +
     case 'label1':
       return { classes: 'text-14 font-sans', tag: 'p' }
     case 'label2':

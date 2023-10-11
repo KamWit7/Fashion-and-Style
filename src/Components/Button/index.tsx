@@ -1,7 +1,11 @@
 import { twMerge } from 'tailwind-merge'
 import { PropsWithChildren, createElement, useMemo } from 'react'
 import { Link, To } from 'react-router-dom'
-import { sizeClasses, variantClasses } from '@components/Button/styles'
+import {
+  sizeClasses,
+  variantClasses,
+  variantClassesDark,
+} from '@components/Button/styles'
 
 export type Variants = 'fill' | 'stroke' | 'text'
 export type Size = 'M' | 'L'
@@ -25,13 +29,15 @@ export type ButtonProps<K extends Element> = {
   className?: string
   iconBefore?: React.ReactNode
   iconAfter?: React.ReactNode
+  isDark?: boolean
 } & LinkProps<K> &
   TagProps[K]
 
 const Button = <K extends Element>({
   className,
   variant = 'fill',
-  size = 'L',
+  size = 'M',
+  isDark = true,
   children,
   iconBefore,
   iconAfter,
@@ -40,9 +46,15 @@ const Button = <K extends Element>({
   ...rest
 }: PropsWithChildren<ButtonProps<K>>) => {
   const classes = useMemo(
-    () => [...variantClasses[variant], ...sizeClasses[size]],
-    [variant, size]
+    () => [
+      ...variantClasses[variant],
+      ...(isDark ? variantClassesDark[variant] : []),
+      ...sizeClasses[size],
+    ],
+    [variant, isDark, size]
   )
+
+  const cN = twMerge(classes, 'px-4 flex-center', className)
 
   const childrenComponent = (
     <>
@@ -51,8 +63,6 @@ const Button = <K extends Element>({
       <div className='pl-1'>{iconAfter && iconAfter}</div>
     </>
   )
-
-  const cN = twMerge(classes, 'px-4 flex-center', className)
 
   if (to) {
     return (
