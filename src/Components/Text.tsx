@@ -4,7 +4,7 @@ import React, {
   ReactNode,
   useMemo,
 } from 'react'
-import classNames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 type VariantTypeMap = {
   h0: 'h1'
@@ -107,7 +107,7 @@ const Text = <V extends Variants, K extends ElementType = VariantTypeMap[V]>({
   const Tag = component ? component : props.tag
 
   return (
-    <Tag className={classNames(props.classes, className)} {...p}>
+    <Tag className={twMerge(props.classes, className)} {...p}>
       {children}
     </Tag>
   )

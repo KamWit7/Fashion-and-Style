@@ -13,10 +13,10 @@ const Landing = () => {
         alt='some img'>
         <Center bg='bg-transparent'>
           <div className='mb-32'>
-            <Text variant='p1' className='italic mb-7'>
+            <Text variant='p1' className='italic mb-7 capitalize font-cabin'>
               Elegance in simplicity, <br /> Earth’s harmony
             </Text>
-            <Button element='a' href='asd'>
+            <Button variant='stroke' size='M'>
               New in
             </Button>
           </div>

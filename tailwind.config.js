@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('tailwindcss').Config} */
-export default {
+
+module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       fontFamily: {
         montserrat: ['Montserrat'], // 400, 600, 700
+        cabin: ['Cabin'], // 400
       },
       fontWeight: {
         normal: 400,
@@ -65,5 +68,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }

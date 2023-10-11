@@ -1,10 +1,11 @@
-import classNames from 'classnames'
+import { twMerge } from 'tailwind-merge'
 import { PropsWithChildren, createElement, useMemo } from 'react'
 import { Link, To } from 'react-router-dom'
+import { sizeClasses, variantClasses } from '@components/Button/styles'
 
-type Variants = 'fill' | 'stroke' | 'text'
-type Size = 'M' | 'L'
-type Element = 'button' | 'Link' | 'a'
+export type Variants = 'fill' | 'stroke' | 'text'
+export type Size = 'M' | 'L'
+export type Element = 'button' | 'Link' | 'a'
 
 type LinkProps<K extends Element> = K extends 'Link'
   ? { element: 'Link'; to: To; href?: never }
@@ -18,7 +19,7 @@ type TagProps = {
   a: React.AnchorHTMLAttributes<HTMLAnchorElement>
 }
 
-type ButtonProps<K extends Element> = {
+export type ButtonProps<K extends Element> = {
   variant?: Variants
   size?: Size
   className?: string
@@ -38,28 +39,10 @@ const Button = <K extends Element>({
   to,
   ...rest
 }: PropsWithChildren<ButtonProps<K>>) => {
-  const classes = useMemo(() => {
-    const variantClasses = {
-      fill: [
-        'bg-primary-600 text-white',
-        'hover:bg-primary-700',
-        'disabled:bg-gray',
-      ],
-      stroke: [
-        'border-primary-600 border text-primary-600',
-        'hover:border-primary-700 hover:text-primary-700',
-        'disabled:bg-gray',
-      ],
-      text: ['text-primary-600', 'hover:text-primary-700', 'disabled:bg-gray'],
-    }[variant]
-
-    const sizeClasses = {
-      L: ['min-w-[202px] py-[9.5px]'],
-      M: ['min-w-[184px] py-2'],
-    }[size]
-
-    return [...variantClasses, ...sizeClasses]
-  }, [size, variant])
+  const classes = useMemo(
+    () => [...variantClasses[variant], ...sizeClasses[size]],
+    [variant, size]
+  )
 
   const childrenComponent = (
     <>
@@ -69,11 +52,11 @@ const Button = <K extends Element>({
     </>
   )
 
+  const cN = twMerge(classes, 'px-4 flex-center', className)
+
   if (to) {
     return (
-      <Link
-        className={classNames(classes, 'px-4 flex-center', className)}
-        to={to}>
+      <Link className={cN} to={to}>
         {childrenComponent}
       </Link>
     )
@@ -82,7 +65,7 @@ const Button = <K extends Element>({
   return createElement(
     element,
     {
-      className: classNames(classes, 'px-4 flex-center', className),
+      className: cN,
       ...rest,
     },
     childrenComponent
