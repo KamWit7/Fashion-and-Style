@@ -20,15 +20,17 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": "./",
+    "baseUrl": "./src/",
     "paths": {
-      "@routes/*": ["src/routes/*"],
-      "@components/*": ["src/components/*"],
-      "@components": ["src/components"],
-      "@layouts/*": ["src/layouts/*"],
-      "@layouts": ["src/layouts"],
-      "@pages/*": ["src/pages/*"],
-      "@pages": ["src/pages"]
+      "@routes/*": ["routes/*"],
+      "@components/*": ["components/*"],
+      "@components": ["components"],
+      "@layouts/*": ["layouts/*"],
+      "@layouts": ["layouts"],
+      "@pages/*": ["pages/*"],
+      "@pages": ["pages"],
+      "@api/*": ["api/*"],
+      "@api": ["api"]
     }
   },
   "include": ["src"],

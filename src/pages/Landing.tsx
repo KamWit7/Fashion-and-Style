@@ -4,19 +4,19 @@ import {
   Center,
   Button,
   FullScreenImg,
-  // ProductCard,
   Slider,
   ProductCard,
+  BannerBtnImg,
 } from '@components'
 import { useEffect, useState } from 'react'
-import { API } from './../api/API'
+import { API } from '@api'
 
 const Landing = () => {
-  const [products, setProducts] = useState([])
+  const [products, setProducts] = useState<API.ProductType[]>([])
 
   useEffect(() => {
     const getProducts = async () => {
-      const data = await API.getProducts()
+      const data = await API.getProducts({ bestseller: true })
       console.log('data', data)
       setProducts(data.products)
     }
@@ -41,9 +41,7 @@ const Landing = () => {
         </Center>
       </FullScreenImg>
       <Center>
-        <Section
-          title='Best Sellers'
-          classChildren='flex justify-between items-center space-x-4'>
+        <Section title='Best Sellers'>
           <Slider>
             {products.map((p, idx) => (
               <ProductCard key={idx} {...p} />
@@ -51,7 +49,9 @@ const Landing = () => {
           </Slider>
         </Section>
 
-        <Section title='Collection'>img</Section>
+        <Section title='Collection'>
+          <BannerBtnImg />
+        </Section>
         <Section title='Modiweek'>Carusele</Section>
         <Section title='Follow Us @F&S'>img</Section>
       </Center>

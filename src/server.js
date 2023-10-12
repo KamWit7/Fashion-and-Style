@@ -56,6 +56,12 @@ createServer({
     this.timing = 1000
 
     this.get('/products', (schema, request) => {
+      const query = Object.keys(request.queryParams)
+
+      if (query.includes('bestseller')) {
+        return schema.products.where({ bestseller: true })
+      }
+
       return schema.products.all()
     })
   },

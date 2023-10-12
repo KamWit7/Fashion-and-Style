@@ -2,14 +2,7 @@ import React from 'react'
 import { Text } from '@components'
 import { twMerge } from 'tailwind-merge'
 
-interface ProductCardProps extends React.PropsWithChildren {
-  title?: string
-  subtitle?: string
-  img?: string
-  price?: number
-}
-
-const variantColors = ['bg-black ', 'bg-blue-600', 'bg-pink-500']
+interface ProductCardProps extends React.PropsWithChildren, API.ProductType {}
 
 const ColorLabels = ({ colors }: { colors: string[] }) => {
   return (
@@ -24,19 +17,29 @@ const ColorLabels = ({ colors }: { colors: string[] }) => {
   )
 }
 
-const ProductCard = ({ title, subtitle, img, price }: ProductCardProps) => {
+const ProductCard = ({
+  title,
+  subtitle,
+  img,
+  price,
+  variants,
+}: ProductCardProps) => {
   return (
-    <div className='max-w-[392px] space-y-1 space-x-1 '>
-      <img src={img} alt='product image' />
+    <div className='max-w-[392px] space-y-1 space-x-1 mb-10 pr-4'>
+      <img src={img} className='h-[450px] w-full' alt='product image' />
 
       {title && <Text variant='h6'>{title}</Text>}
 
-      <div className='flex justify-between items-center flex-row'>
+      <div className='flex justify-between items-center flex-row '>
         {subtitle && <Text variant='b2'>{subtitle}</Text>}
-        {price && <div className='mr-1'>{price}</div>}
+        {price && (
+          <Text variant='h6' className='mr-1'>
+            {price}$
+          </Text>
+        )}
       </div>
 
-      <ColorLabels colors={variantColors} />
+      <ColorLabels colors={variants} />
     </div>
   )
 }

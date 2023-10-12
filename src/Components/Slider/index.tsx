@@ -1,6 +1,6 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination, Mousewheel, Autoplay } from 'swiper/modules'
+import { Pagination, Mousewheel } from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -19,19 +19,12 @@ const Slider = ({ children, className }: SliderProps) => {
   return (
     <Swiper
       pagination={classes}
-      autoplay={{
-        delay: 4000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
       slidesPerView={3}
       mousewheel={{ thresholdDelta: 20, forceToAxis: true }}
-      modules={[Pagination, Mousewheel, Autoplay]}
+      modules={[Pagination, Mousewheel]}
       className={className}>
       {React.Children.map(children, (child) => (
-        <SwiperSlide>
-          <div className='pl-6 mb-10'>{child}</div>
-        </SwiperSlide>
+        <SwiperSlide>{child}</SwiperSlide>
       ))}
     </Swiper>
   )

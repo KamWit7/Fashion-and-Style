@@ -6,16 +6,9 @@ interface SectionPros
   extends React.HTMLAttributes<HTMLElement>,
     React.PropsWithChildren {
   title: string
-  classChildren?: string
 }
 
-const Section = ({
-  children,
-  title,
-  className,
-  classChildren,
-  ...rest
-}: SectionPros) => {
+const Section = ({ children, title, className, ...rest }: SectionPros) => {
   return (
     <section
       className={twMerge(
@@ -26,7 +19,7 @@ const Section = ({
       <Text variant='h3' className='mb-4'>
         {title}
       </Text>
-      <div className={classChildren}>{children}</div>
+      <div>{children}</div>
     </section>
   )
 }
