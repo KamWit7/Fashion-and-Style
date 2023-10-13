@@ -13,18 +13,20 @@ const FullScreenImg = ({
   src,
   alt,
   className,
+  srcSet,
 }: React.PropsWithChildren<FullScreenImgProps>) => {
   return (
     <div className='h-fit relative'>
       <img
         src={src}
         alt={alt}
+        srcSet={srcSet}
         className={twMerge(
           'max-w-full bg-center bg-no-repeat bg-cover h-auto mx-auto',
           className
         )}
       />
-      <div className='absolute bottom-0 left-0 mx-auto'>{children}</div>
+      <div className='absolute inset-0 w-full h-full'>{children}</div>
     </div>
   )
 }

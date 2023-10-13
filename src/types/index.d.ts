@@ -10,4 +10,6 @@ namespace API {
     variants: string[]
     bestseller: boolean
   }
+
+  type ModiweekType = Pick<ProductType, 'uid' | 'img' | 'title'>
 }

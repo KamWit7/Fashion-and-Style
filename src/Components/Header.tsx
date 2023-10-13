@@ -1,22 +1,42 @@
 import { Link } from 'react-router-dom'
+import { Text } from '@components'
+import {
+  AiOutlineHeart,
+  AiOutlineShopping,
+  AiOutlineSearch,
+} from 'react-icons/ai'
+import { BsPerson } from 'react-icons/bs'
+import Logo from '@src/assets/Logo'
 
 const Header = () => {
   return (
-    <header className='flex justify-between items-center'>
-      <div className='flex justify-start items-center'>
-        <Link className='p-4' to='.'>
-          Logo
+    <header className='flex justify-between items-center '>
+      <div className='flex justify-between items-center space-x-4 '>
+        <Link to='.'>
+          <Logo />
         </Link>
-        <Link className='p-4' to='products'>
-          Products
-        </Link>
+        <div className='flex gap-6 p-6'>
+          <Link to='products'>
+            <Text variant='b2'>Products</Text>
+          </Link>
+          <Link to='products'>
+            <Text variant='b2'>Best Sellers</Text>
+          </Link>
+          <Link to='products'>
+            <Text variant='b2'>Modiweek</Text>
+          </Link>
+        </div>
       </div>
-      <div className='flex justify-end items-center flex-row'>
-        <Link className='p-4' to='basket'>
-          Basket
+      <div className='flex gap-4 h-full justify-end '>
+        <AiOutlineSearch size={24} />
+        <Link to='favorite'>
+          <AiOutlineHeart size={24} />
         </Link>
-        <Link className='p-4' to='profile'>
-          <span className='font-montserrat text-xl font-bold'>Profile</span>
+        <Link to='basket'>
+          <AiOutlineShopping size={24} />
+        </Link>
+        <Link to='profile'>
+          <BsPerson size={24} />
         </Link>
       </div>
     </header>

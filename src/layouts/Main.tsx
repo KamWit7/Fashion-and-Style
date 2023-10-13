@@ -8,9 +8,7 @@ const Main = () => {
         <Header />
       </Center>
       <Outlet />
-      <Center>
-        <Footer />
-      </Center>
+      <Footer />
     </>
   )
 }

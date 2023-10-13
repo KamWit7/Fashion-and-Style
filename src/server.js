@@ -4,6 +4,7 @@ import { createServer, Model } from 'miragejs'
 createServer({
   models: {
     products: Model,
+    modiweeks: Model,
   },
 
   seeds(server) {
@@ -48,6 +49,41 @@ createServer({
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: false,
     })
+    server.create('modiweek', {
+      uid: 1,
+      img: 'https://s3-alpha-sig.figma.com/img/47db/fd79/c6b95428bbbaa4151b79b1371e32ef3c?Expires=1698019200&Signature=Um3QJ4q9k1QPygqB7F36HeLCHZPp3c4-cJz95As9H3wSWgpGrBhfypUk9xaI4BeWsJGIdiz~BebsqP7xV802Ws-saIPTgifpmHJ95cKyjAZq1I~Ex5TxF0Ys7kbx2a4L3MRziWS8bEFSR7Yt-LD36epomhzd18J16TPzvf1i0xNOgb0MMV8WAFiXxZbYFGOedpZa9PciPgKBeFzx6BRV5MxSxeAy1AJ8Dj9E5igGsK1syzNgVRHi6N~5sGibgAek9wLuJSVXD-YP1HY5QMR3BiPAAG~Ncj1L4-jCyCZiQNfEcrx8cOqIXbX9NbPgOrh6FwDTJgEUkr5~qonoo8oXCQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      title: 'Monday',
+    })
+    server.create('modiweek', {
+      uid: 2,
+      img: 'https://s3-alpha-sig.figma.com/img/9837/81cf/4566146f7e076271e6a38076e1a0f454?Expires=1698019200&Signature=Pr8bNVcNKMfbxuRjGfWsyuHCzLiMvzS243o5CeYDiLEPjFrlPIl9eeufjdCW8KbxBwz8WpqZLjra1c70DS8NS0g3iLj2q9~50iEkr92~7Qw8niemrW93JK2OHv7DwVK1asteSa1BgnXKDajiKVhjsAfxGKU~tIZQQbDDPnoGvnBD1-fhlAuhlL1q101EKcY~lLJG9o-dZIyanTmyh~Miw588PSzD0XDqAFB3AF8en~J7rBVxkjOAl1hwK~4lx~Y9PKQYTxGyQD9y6zv17VFgOaSJuOAEmaJ2G565x3uQanmJt~OmIr7t5q5Xzb6b9ipg1wd-8ySIok2jaQezIxfHYg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      title: 'Tuesday',
+    })
+    server.create('modiweek', {
+      uid: 3,
+      img: 'https://s3-alpha-sig.figma.com/img/06aa/e4d5/926c1cd903beb633f085b86f962325a3?Expires=1698019200&Signature=lCyQQrLIg9JR96Nh1kl3jj62rQgaLyvWpreOQnOkTWuI~oz~DUabg6jqyMuHdFqbXmVS6Mu6rByvuC4O83lSMuwqMh8F3OnbreGynwTBsbqxymclTh-1Af30UdGdmlMxN7BPMY~tlbVeI1pL7hYQSikUeE1dHm9k6FdQlDzg7zMM-LyoHl8-2bVu3wbDw81ClsPUFqpbCLV-va3Rn5JKObVHzDU5t21BZLIhbgHZaHXB-1Sqd1dPDpfc85CobJgonBa7vmlbMHAXMWd2iYdT0KxPj07A~TJLvTWeoXYbvuMmJrFSY20GoT0ExNbJh7spN3GnSwbTDbHHbXsyt9XFrQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      title: 'Wednesday',
+    })
+    server.create('modiweek', {
+      uid: 4,
+      img: 'https://s3-alpha-sig.figma.com/img/fa7f/e57a/40471af0f1a8b7063b5d79ec574a7c11?Expires=1698019200&Signature=k~CdD56r-dmizEd0rsqGbdE0n2-tljvLsVBNYIoSAumXHMccFWELKemAubXCJ~kuOnZkj8LjPv8D2ngp3g1nIAYfH30o0At~F7mvRl3j8VxwtqhFwKxWjYrpcDdD3DHdiZhd4aD~d08QBTRWstn7MlzKM~soZ96OFAx7Shtt~qqVUGfbOa1eE1EClGZCLuLUmp61YYWDnOtkYYjDP01gPBiyV0OoIYaQWSXenKotFXtJVYJ0xR8zRkvnZu77vNte~ykVZPF4b0dNR4jBjodePQqBJAMBu~-KzkF8GnTRtKlbwyQIXcj0~G2cI-oSbGrIGrCdlCBGmY1BsYLDY5H6kA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      title: 'Thursday',
+    })
+    server.create('modiweek', {
+      uid: 5,
+      img: 'https://s3-alpha-sig.figma.com/img/9d9f/f4b3/43c6ec950877c8232a27898f114312ac?Expires=1698019200&Signature=CM~k1WYdV4619PYJpcgu7OUq97muzAOogT4-OTnNnDR9esw0URdVQAqzTPfa51aZ2jJRBSNWNeSIwttb67X0hqflZSh8t2Js63EVwQmisjXF93xck0C0WNpQFMD8nDRXodYPVyQTA72NlasaQCkPcOx56BGfdy8NCDE6IYIE69pfhA8OLHJmvNxey2pN9DCxsnqWh00Rv1yMOYEv8fw6YNTS6ixoNG38ymf5vMZ41woLrk46a7IGh9n2-xbYEUClkVEP~Jns1~Gdel59IGeH6F04YEPI3ZWgbfDgTHIoif3v7FdHSOuX79ooHl4J7nAzGIksPoDza6KE4G8BNDed7w__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      title: 'Friday',
+    })
+    server.create('modiweek', {
+      uid: 6,
+      img: 'https://s3-alpha-sig.figma.com/img/9837/81cf/4566146f7e076271e6a38076e1a0f454?Expires=1698019200&Signature=Pr8bNVcNKMfbxuRjGfWsyuHCzLiMvzS243o5CeYDiLEPjFrlPIl9eeufjdCW8KbxBwz8WpqZLjra1c70DS8NS0g3iLj2q9~50iEkr92~7Qw8niemrW93JK2OHv7DwVK1asteSa1BgnXKDajiKVhjsAfxGKU~tIZQQbDDPnoGvnBD1-fhlAuhlL1q101EKcY~lLJG9o-dZIyanTmyh~Miw588PSzD0XDqAFB3AF8en~J7rBVxkjOAl1hwK~4lx~Y9PKQYTxGyQD9y6zv17VFgOaSJuOAEmaJ2G565x3uQanmJt~OmIr7t5q5Xzb6b9ipg1wd-8ySIok2jaQezIxfHYg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      title: 'Saturday',
+    })
+    server.create('modiweek', {
+      uid: 7,
+      img: 'https://s3-alpha-sig.figma.com/img/47db/fd79/c6b95428bbbaa4151b79b1371e32ef3c?Expires=1698019200&Signature=Um3QJ4q9k1QPygqB7F36HeLCHZPp3c4-cJz95As9H3wSWgpGrBhfypUk9xaI4BeWsJGIdiz~BebsqP7xV802Ws-saIPTgifpmHJ95cKyjAZq1I~Ex5TxF0Ys7kbx2a4L3MRziWS8bEFSR7Yt-LD36epomhzd18J16TPzvf1i0xNOgb0MMV8WAFiXxZbYFGOedpZa9PciPgKBeFzx6BRV5MxSxeAy1AJ8Dj9E5igGsK1syzNgVRHi6N~5sGibgAek9wLuJSVXD-YP1HY5QMR3BiPAAG~Ncj1L4-jCyCZiQNfEcrx8cOqIXbX9NbPgOrh6FwDTJgEUkr5~qonoo8oXCQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      title: 'Sunday',
+    })
   },
 
   routes() {
@@ -63,6 +99,9 @@ createServer({
       }
 
       return schema.products.all()
+    })
+    this.get('/modiweeks', (schema) => {
+      return schema.modiweeks.all()
     })
   },
 })
