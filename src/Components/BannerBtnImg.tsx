@@ -70,14 +70,14 @@ const BannerBtnImg = () => {
           className='mb-36'
           src='https://s3-alpha-sig.figma.com/img/ad9c/d55b/08cf35cdef25b1b91c9267cde6c2da60?Expires=1698019200&Signature=kWnNpYp5BZSLN2WXzfdilb3WNiyl9~GKRx6FjkG0BIs1~5TwI-PHJwdhRwOyTG9dpxR3r2vsQ45daotT~FqoE9~eEiQpSMWwY5tKx38zW-XPtGYTYvXCiOVoLlkR9qbJxFLuwgyYW7JKCg9KYYKbKVBtUnklkaP-cdeS6wOVpDVnZo4xRfLz9mjvaSs8bog1ExVu1F8TwzWp8oqFlE6axfmw8btKnYhpafVKnBPrqEMPUxmC1Jzx99syd3Tqm~harPhhX4AmC1O6zRrJiiWa4QsJRL08X41RwUHMELA-Fs7TZ--S8P1xRW0h-Nz7xIAM5VqEzVJ-F03a2KDqTAGi1Q__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
           alignBtn='left'>
-          Blouses
+          Pants
         </ImgWithButton>
         <ImgWithButton
           imgH='h-[435px]'
           src='https://s3-alpha-sig.figma.com/img/73e1/4e49/4a3e57253a1e3434e22de58928784b6f?Expires=1698019200&Signature=Mel6urhAC3l9HugX-QklpIjhjwChJNfaWhJT7rEOuZjHo1-RU9SmwIaD~I1G6PwHXpu2fYsh2wZEUvKJaQ17~E7uwBDsjkXg2XyqgACS8wj~ey2kLWUmx5j~v9oZbPpo91S9Wzymgcz2XC6R7nYJ6PhN9xGaIm6yU4hlny0NrSxYA1LCTcUpxbPmFq1i44xAD2DHVv5NZfM-V943V73g3MdGtinJi2uh3QHJBcJa2~EZAMk3s42V1fHXLJILx~bYOkMjZ7mch13do9NyCAps~6Fcd4RpXMRFs9v7aZ~vuv6faSXjJUux5WYfwKL0golM5ZvxjfnixpwhAXkZ~L5ivg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4'
           alignBtn='right'
           isRelativeBg>
-          Blouses
+          Outwear
         </ImgWithButton>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react'
 import { Pagination, Mousewheel } from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-interface SliderProps extends React.PropsWithChildren {
+interface SliderProps extends React.PropsWithChildren, SwiperProps {
   className?: string
 }
 
@@ -15,14 +15,20 @@ const classes = {
   bulletActiveClass: 'bg-primary-400',
 }
 
-const Slider = ({ children, className }: SliderProps) => {
+const Slider = ({
+  children,
+  className,
+  modules = [],
+  ...swiperProps
+}: SliderProps) => {
   return (
     <Swiper
       pagination={classes}
       slidesPerView={3}
       mousewheel={{ thresholdDelta: 20, forceToAxis: true }}
-      modules={[Pagination, Mousewheel]}
-      className={className}>
+      modules={[Pagination, Mousewheel, ...modules]}
+      className={className}
+      {...swiperProps}>
       {React.Children.map(children, (child) => (
         <SwiperSlide>{child}</SwiperSlide>
       ))}
