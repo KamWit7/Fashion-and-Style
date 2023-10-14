@@ -60,6 +60,7 @@ const Landing = () => {
                 subtitle={p.subtitle}
                 img={p.img}
                 price={p.price}
+                variants={p.variants}
               />
             ))}
           </Slider>
