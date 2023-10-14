@@ -13,7 +13,7 @@ const Center = ({
 }: React.PropsWithChildren<CenterProps>) => {
   return (
     <section className={twMerge(bg || 'bg-white', 'px-4 md:px-28', className)}>
-      <div className='mx-auto max-w-6xl h-full'>{children}</div>
+      <div className='mx-auto max-w-6xl h-full w-full'>{children}</div>
     </section>
   )
 }
