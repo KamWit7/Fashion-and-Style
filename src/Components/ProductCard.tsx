@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Text } from '@components'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@utils/cn'
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 
 interface ProductCardProps
@@ -17,7 +17,7 @@ const ColorLabels = ({ colors }: { colors: string[] }) => {
       {colors.map((color, idx) => (
         <div
           key={`color_label_${color}_${idx}`}
-          className={twMerge('rounded-full w-6 h-6 mr-2 last:mr-0', color)}
+          className={cn('rounded-full w-6 h-6 mr-2 last:mr-0', color)}
         />
       ))}
     </div>
@@ -56,13 +56,13 @@ const ProductCard = ({
 }: ProductCardProps) => {
   return (
     <div
-      className={twMerge(
+      className={cn(
         'relative max-w-[392px] space-y-1 space-x-1 mb-10 pr-4',
         className
       )}>
       <img
         src={img}
-        className={twMerge('w-full h-[438px]', imgClassName)}
+        className={cn('w-full h-[438px]', imgClassName)}
         alt='product image'
       />
 

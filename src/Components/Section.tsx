@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text } from '@components'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@utils/cn'
 
 interface SectionPros
   extends React.HTMLAttributes<HTMLElement>,
@@ -11,10 +11,7 @@ interface SectionPros
 const Section = ({ children, title, className, ...rest }: SectionPros) => {
   return (
     <section
-      className={twMerge(
-        'mt-20 mb-6 capitalize flex flex-col w-full',
-        className
-      )}
+      className={cn('mt-20 mb-6 capitalize flex flex-col w-full', className)}
       {...rest}>
       <Text variant='h3' className='mb-4'>
         {title}
