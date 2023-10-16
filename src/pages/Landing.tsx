@@ -89,9 +89,9 @@ const Landing = () => {
         </Section>
       </Center>
 
-      <Center>
+      {/* <Center>
         <Section title='Follow Us @F&S'>img</Section>
-      </Center>
+      </Center> */}
     </div>
   )
 }

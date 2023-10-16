@@ -27,6 +27,7 @@ module.exports = {
         16: ['1rem', '1.4rem'],
         14: ['0.875rem', '1.575rem'],
         12: ['0.75rem', '1.35rem'],
+        10: ['0.625rem', '1.125rem'],
       },
       colors: {
         primary: {

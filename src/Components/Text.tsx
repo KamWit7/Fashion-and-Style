@@ -1,10 +1,10 @@
-import React, {
+import { cn } from '@utils/cn'
+import {
   ComponentPropsWithoutRef,
   ElementType,
   ReactNode,
   useMemo,
 } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 type VariantTypeMap = {
   h0: 'h1'
@@ -36,7 +36,6 @@ type TextProps<T extends ElementType, V extends Variants> = {
   children: ReactNode | ReactNode[] | string
   className?: string
 }
-
 const getVariantClasses = (variant: Variants): TagProps => {
   switch (variant) {
     case 'h1':
@@ -79,14 +78,20 @@ const getVariantClasses = (variant: Variants): TagProps => {
     case 'p2':
       return { classes: 'text-20 md:text-24 font-sans', tag: 'p' }
     case 'b1':
-      return { classes: 'text-16 md:text-18 font-monsarrat ', tag: 'p' } // +
+      return {
+        classes: 'text-16 md:text-18 font-monsarrat ',
+        tag: 'p',
+      } // +
     case 'b2':
       return {
         classes: 'text-14 md:text-16 font-montserrat font-normal',
         tag: 'p',
       } // +
     case 'label1':
-      return { classes: 'text-12 font-montserrat text-primary-100 font-normal', tag: 'p' }
+      return {
+        classes: 'text-10 md:text-14 font-montserrat text-primary-100',
+        tag: 'p',
+      }
     case 'label2':
       return { classes: 'text-8 font-sans', tag: 'p' }
     default:
@@ -107,7 +112,7 @@ const Text = <V extends Variants, K extends ElementType = VariantTypeMap[V]>({
   const Tag = component ? component : props.tag
 
   return (
-    <Tag className={twMerge(props.classes, className)} {...p}>
+    <Tag className={cn(props.classes, className)} {...p}>
       {children}
     </Tag>
   )

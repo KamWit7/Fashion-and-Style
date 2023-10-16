@@ -1,5 +1,5 @@
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@utils/cn'
 import { Button } from '@components'
 
 interface ImgWithButtonProps
@@ -20,13 +20,13 @@ const ImgWithButton = ({
 }: ImgWithButtonProps) => {
   return (
     <div
-      className={twMerge(
+      className={cn(
         'relative overflow-hidden w-full',
         isRelativeBg && imgH,
         className
       )}>
       <img
-        className={twMerge(
+        className={cn(
           'w-full bg-cover',
           imgH,
           isRelativeBg && 'absolute w-full h-auto top-1/2 -translate-y-1/2'
@@ -35,7 +35,7 @@ const ImgWithButton = ({
         alt='collection img'
       />
       <Button
-        className={twMerge(
+        className={cn(
           'absolute bottom-4',
           alignBtn === 'right' ? 'right-4' : 'left-4'
         )}>

@@ -1,5 +1,5 @@
 import React, { useId } from 'react'
-import { cnJoin } from '@utils/cnJoin'
+import { cnJoin } from '@utils/cn'
 
 interface CheckboxProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'children'> {

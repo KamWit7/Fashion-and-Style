@@ -1,4 +1,4 @@
-import { cnJoin } from '@src/utils/cnJoin'
+import { cnJoin } from '@utils/cn'
 import React, { useId } from 'react'
 
 interface InputProps

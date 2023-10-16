@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge'
+import { cn } from '@utils/cn'
 import React from 'react'
 
 type FullScreenImgProps = Omit<
@@ -21,7 +21,7 @@ const FullScreenImg = ({
         src={src}
         alt={alt}
         srcSet={srcSet}
-        className={twMerge(
+        className={cn(
           'max-w-full bg-center bg-no-repeat bg-cover h-auto mx-auto',
           className
         )}
