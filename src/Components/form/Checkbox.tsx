@@ -31,7 +31,7 @@ const Checkbox = ({ label, name, ...rest }: CheckboxProps) => {
       />
       <label
         htmlFor={`checkbox_${id}`}
-        className='font-montserrat font-semibold text-12 cursor-pointer'>
+        className='font-montserrat font-semibold text-12 cursor-pointer ml-2'>
         {label}
       </label>
     </div>

@@ -11,29 +11,33 @@ export type Variants = 'fill' | 'stroke' | 'text'
 export type Size = 'M' | 'L'
 export type Element = 'button' | 'Link' | 'a'
 
-type LinkProps<K extends Element> = K extends 'Link'
-  ? { element: 'Link'; to: To; href?: never }
-  : K extends 'a'
-  ? { element: 'a'; to?: never; href: string }
-  : { element?: 'button'; to?: never; href?: never }
+type ElementProps =
+  | (Omit<React.ComponentProps<typeof Link>, 'to'> & {
+      element: 'Link'
+      to: To
+      href?: never
+    })
+  | (React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+      element: 'a'
+      to?: never
+      href: string
+    })
+  | (React.ButtonHTMLAttributes<HTMLButtonElement> & {
+      element?: 'button'
+      to?: never
+      href?: never
+    })
 
-type TagProps = {
-  Link: Omit<React.ComponentProps<typeof Link>, 'to'>
-  button: React.ButtonHTMLAttributes<HTMLButtonElement>
-  a: React.AnchorHTMLAttributes<HTMLAnchorElement>
-}
-
-export type ButtonProps<K extends Element> = {
+export type ButtonProps = {
   variant?: Variants
   size?: Size
   className?: string
   iconBefore?: React.ReactNode
   iconAfter?: React.ReactNode
   invertOnDark?: boolean
-} & LinkProps<K> &
-  TagProps[K]
+} & ElementProps
 
-const Button = <K extends Element>({
+const Button = ({
   className,
   variant = 'fill',
   size = 'M',
@@ -44,7 +48,7 @@ const Button = <K extends Element>({
   element = 'button',
   to,
   ...rest
-}: PropsWithChildren<ButtonProps<K>>) => {
+}: PropsWithChildren<ButtonProps>) => {
   const classes = useMemo(
     () => [
       ...variantClasses[variant],
