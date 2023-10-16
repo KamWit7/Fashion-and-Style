@@ -29,7 +29,7 @@ export type ButtonProps<K extends Element> = {
   className?: string
   iconBefore?: React.ReactNode
   iconAfter?: React.ReactNode
-  isDark?: boolean
+  invertOnDark?: boolean
 } & LinkProps<K> &
   TagProps[K]
 
@@ -37,7 +37,7 @@ const Button = <K extends Element>({
   className,
   variant = 'fill',
   size = 'M',
-  isDark = true,
+  invertOnDark = true,
   children,
   iconBefore,
   iconAfter,
@@ -48,10 +48,10 @@ const Button = <K extends Element>({
   const classes = useMemo(
     () => [
       ...variantClasses[variant],
-      ...(isDark ? variantClassesDark[variant] : []),
+      ...(invertOnDark ? variantClassesDark[variant] : []),
       ...sizeClasses[size],
     ],
-    [variant, isDark, size]
+    [variant, invertOnDark, size]
   )
 
   const cN = twMerge(classes, 'px-4 flex-center', className)

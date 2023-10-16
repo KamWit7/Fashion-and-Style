@@ -1,8 +1,9 @@
-import { Center, Text } from '@components'
+import { Center, Checkbox, Input, Text } from '@components'
 import { Link } from 'react-router-dom'
 import {
   AiOutlineInstagram,
   AiFillFacebook,
+  AiOutlineArrowRight,
   AiOutlineCopyrightCircle,
 } from 'react-icons/ai'
 import { BiLogoTiktok } from 'react-icons/bi'
@@ -46,18 +47,36 @@ const Footer = () => {
               <Text variant='h5'>
                 Join Our Club, Get 15% Off For Your Birthday
               </Text>
-              <Text variant='b1'>Enter Your Email</Text>
-              <Text variant='b1'>
-                By Submittng your email, you agree to receive advertising emails
-                from Modimal.
-              </Text>
+
+              <form>
+                <Input
+                  label='Enter Your Email Address'
+                  icon={(styleProps) => (
+                    <AiOutlineArrowRight
+                      size={styleProps.size}
+                      className={styleProps.className}
+                    />
+                  )}
+                />
+
+                <Checkbox
+                  name='email-allowed'
+                  label='By Submittng your email, you agree to receive advertising emails from Modimal.'
+                />
+              </form>
             </div>
 
             <div>
               <div className='flex gap-4 mb-11'>
-                <AiOutlineInstagram size={24} />
-                <AiFillFacebook size={24} />
-                <BiLogoTiktok size={24} />
+                <a href='https://www.instagram.com/'>
+                  <AiOutlineInstagram size={32} className='cursor-pointer' />{' '}
+                </a>
+                <a href='https://www.facebook.com/'>
+                  <AiFillFacebook size={32} className='cursor-pointer' />{' '}
+                </a>
+                <a href='https://www.tiktok.com/explore'>
+                  <BiLogoTiktok size={32} className='cursor-pointer' />{' '}
+                </a>
               </div>
               <div className='flex items-center gap-2'>
                 <AiOutlineCopyrightCircle size={24} />

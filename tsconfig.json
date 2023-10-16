@@ -31,7 +31,9 @@
       "@pages/*": ["pages/*"],
       "@pages": ["pages"],
       "@api/*": ["api/*"],
-      "@api": ["api"]
+      "@api": ["api"],
+      "@utils/*": ["utils/*"],
+      "@utils": ["utils"]
     }
   },
   "include": ["src"],

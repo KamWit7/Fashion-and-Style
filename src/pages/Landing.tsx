@@ -49,7 +49,7 @@ const Landing = () => {
           <Button
             variant='text'
             className='absolute top-2 right-2 p-2 min-w-fit'
-            isDark={false}>
+            invertOnDark={false}>
             View All
           </Button>
           <Slider>
