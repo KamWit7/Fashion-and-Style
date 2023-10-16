@@ -6,14 +6,21 @@ interface SectionPros
   extends React.HTMLAttributes<HTMLElement>,
     React.PropsWithChildren {
   title: string
+  titleCN?: string
 }
 
-const Section = ({ children, title, className, ...rest }: SectionPros) => {
+const Section = ({
+  children,
+  title,
+  className,
+  titleCN,
+  ...rest
+}: SectionPros) => {
   return (
     <section
       className={cn('mt-20 mb-6 capitalize flex flex-col w-full', className)}
       {...rest}>
-      <Text variant='h3' className='mb-4'>
+      <Text variant='h3' className={cn('mb-4', titleCN)}>
         {title}
       </Text>
       <div>{children}</div>

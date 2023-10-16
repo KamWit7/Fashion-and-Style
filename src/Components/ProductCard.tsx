@@ -17,7 +17,10 @@ const ColorLabels = ({ colors }: { colors: string[] }) => {
       {colors.map((color, idx) => (
         <div
           key={`color_label_${color}_${idx}`}
-          className={cn('rounded-full w-6 h-6 mr-2 last:mr-0', color)}
+          className={cn(
+            'rounded-full w-4 h-4 md:w-6 md:h-6 mr-2 last:mr-0 cursor-pointer',
+            color
+          )}
         />
       ))}
     </div>
@@ -31,10 +34,10 @@ const FavoriteLabel = () => {
     setLiked((prev) => !prev)
   }
 
-  const styles = 'absolute top-4 right-8 cursor-pointer'
-
   return (
-    <div onClick={toggleLiked} className={styles}>
+    <div
+      onClick={toggleLiked}
+      className='absolute top-2 md:top-4 right-8 cursor-pointer'>
       {liked ? (
         <AiFillHeart size={24} className='fill-state-error-light' />
       ) : (
@@ -62,7 +65,7 @@ const ProductCard = ({
       )}>
       <img
         src={img}
-        className={cn('w-full h-[438px]', imgClassName)}
+        className={cn('h-auto min-h-[213px] md:max-h-[438px]', imgClassName)}
         alt='product image'
       />
 
@@ -74,10 +77,14 @@ const ProductCard = ({
         </Text>
       )}
 
-      <div className='flex justify-between items-center flex-row '>
-        {subtitle && <Text variant='b2'>{subtitle}</Text>}
+      <div className='flex justify-between flex-col md:flex-row'>
+        {subtitle && (
+          <Text variant='b2' className='self-start md:self-center'>
+            {subtitle}
+          </Text>
+        )}
         {price && (
-          <Text variant='h6' className='mr-1'>
+          <Text variant='h6' className='self-end mr-1 md:self-center'>
             {price}$
           </Text>
         )}

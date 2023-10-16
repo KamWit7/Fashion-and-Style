@@ -47,7 +47,7 @@ createServer({
       subtitle: 'Turn it Up Pants',
       price: 110,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
-      bestseller: false,
+      bestseller: true,
     })
     server.create('modiweek', {
       uid: 1,

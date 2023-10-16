@@ -22,17 +22,18 @@ const Slider = ({
   ...swiperProps
 }: SliderProps) => {
   return (
-    <Swiper
-      pagination={classes}
-      slidesPerView={3}
-      mousewheel={{ thresholdDelta: 20, forceToAxis: true }}
-      modules={[Pagination, Mousewheel, ...modules]}
-      className={className}
-      {...swiperProps}>
-      {React.Children.map(children, (child) => (
-        <SwiperSlide>{child}</SwiperSlide>
-      ))}
-    </Swiper>
+    <div className={className}>
+      <Swiper
+        pagination={classes}
+        slidesPerView={3}
+        mousewheel={{ thresholdDelta: 20, forceToAxis: true }}
+        modules={[Pagination, Mousewheel, ...modules]}
+        {...swiperProps}>
+        {React.Children.map(children, (child) => (
+          <SwiperSlide>{child}</SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   )
 }
 
