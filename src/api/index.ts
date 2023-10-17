@@ -23,7 +23,7 @@ export const API = {
 
     const data = await res.json();
 
-    return data as { products: API.ProductType[] };
+    return data.products as API.ProductType[];
   },
 
   getModiweek: async () => {
@@ -38,7 +38,6 @@ export const API = {
     }
     const data = await res.json();
 
-    console.log('data', data);
-    return data as { modiweeks: API.ModiweekType[] };
+    return data.modiweeks as API.ModiweekType[];
   },
 };
