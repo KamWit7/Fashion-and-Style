@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet } from 'react-router-dom';
 
 const Profile = () => {
   return (
@@ -6,7 +6,7 @@ const Profile = () => {
       ProfileLayout
       <Outlet />
     </div>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;

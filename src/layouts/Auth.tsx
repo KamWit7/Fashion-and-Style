@@ -1,10 +1,10 @@
-import { Outlet, Navigate } from 'react-router-dom'
+import { Outlet, Navigate } from 'react-router-dom';
 
 const Auth = () => {
-  const isLoggedIn = !false
+  const isLoggedIn = !false;
 
   if (!isLoggedIn) {
-    return <Navigate to='/login?message=You must be logged in' />
+    return <Navigate to="/login?message=You must be logged in" />;
   }
 
   return (
@@ -12,7 +12,7 @@ const Auth = () => {
       AuthLayout
       <Outlet />
     </>
-  )
-}
+  );
+};
 
-export default Auth
+export default Auth;
