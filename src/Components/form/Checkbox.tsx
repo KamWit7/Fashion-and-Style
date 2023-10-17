@@ -1,41 +1,38 @@
-import React, { useId } from 'react'
-import { cnJoin } from '@utils/cn'
+import React, { useId } from 'react';
+import { cnJoin } from '@utils/cn';
 
-interface CheckboxProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'children'> {
-  label?: React.ReactNode
+interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'children'> {
+  label?: React.ReactNode;
 }
 
 const Checkbox = ({ label, name, ...rest }: CheckboxProps) => {
-  const id = useId()
+  const id = useId();
   return (
-    <div className='flex justify-start items-center gap-2'>
+    <div className="flex items-center justify-start gap-2">
       <input
         id={`checkbox_${id}`}
         name={name}
-        type='checkbox'
+        type="checkbox"
         className={cnJoin(
-          'appearance-none w-4 h-4 relative border-0',
+          'relative h-4 w-4 appearance-none border-0',
 
-          'before:inline-block before:absolute before:top-0 after:left-0',
-          'before:w-4 before:h-4 before:bg-white before:cursor-pointer',
-          'checked:before:bg-primary-600 before:transition-bg before:ease-in-out before:duration-200',
+          'before:absolute before:top-0 before:inline-block after:left-0',
+          'before:h-4 before:w-4 before:cursor-pointer before:bg-white',
+          'before:transition-bg before:duration-200 before:ease-in-out checked:before:bg-primary-600',
 
-          'after:inline-block after:absolute after:top-0 after:left-0',
-          'after:checked:w-2 after:checked:h-3 after:w-0 after:h-0',
-          'after:checked:border-b-2 after:checked:border-r-2 after:border-0',
-          'after:rotate-45 after:translate-x-1',
+          'after:absolute after:left-0 after:top-0 after:inline-block',
+          'after:h-0 after:w-0 after:checked:h-3 after:checked:w-2',
+          'after:border-0 after:checked:border-b-2 after:checked:border-r-2',
+          'after:translate-x-1 after:rotate-45',
           'after:checked:border-white'
         )}
         {...rest}
       />
-      <label
-        htmlFor={`checkbox_${id}`}
-        className='font-montserrat font-semibold text-12 cursor-pointer ml-2'>
+      <label htmlFor={`checkbox_${id}`} className="ml-2 cursor-pointer font-montserrat text-12 font-semibold">
         {label}
       </label>
     </div>
-  )
-}
+  );
+};
 
-export default Checkbox
+export default Checkbox;

@@ -1,8 +1,8 @@
-import { createBrowserRouter } from 'react-router-dom'
-import * as Layouts from '@layouts'
-import * as Pages from '@pages'
+import { createBrowserRouter } from 'react-router-dom';
+import * as Layouts from '@layouts';
+import * as Pages from '@pages';
 
-import './../server'
+import './../server';
 
 const protectedRoutes = {
   element: <Layouts.Auth />,
@@ -28,7 +28,7 @@ const protectedRoutes = {
       ],
     },
   ],
-}
+};
 
 const router = createBrowserRouter([
   {
@@ -56,6 +56,6 @@ const router = createBrowserRouter([
       { path: '*', element: <Pages.NotFound /> },
     ],
   },
-])
+]);
 
-export default router
+export default router;

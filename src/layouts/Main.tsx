@@ -1,5 +1,5 @@
-import { Outlet } from 'react-router-dom'
-import { Header, Footer, Center } from '@components'
+import { Outlet } from 'react-router-dom';
+import { Header, Footer, Center } from '@components';
 
 const Main = () => {
   return (
@@ -10,7 +10,7 @@ const Main = () => {
       <Outlet />
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

@@ -9,6 +9,6 @@
 
 @layer utilities {
   .flex-center {
-    @apply flex flex-row flex-nowrap justify-center items-center;
+    @apply flex flex-row flex-nowrap items-center justify-center;
   }
 }

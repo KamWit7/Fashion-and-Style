@@ -1,51 +1,40 @@
-import React, { useState } from 'react'
-import { Text } from '@components'
-import { cn } from '@utils/cn'
-import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
+import React, { useState } from 'react';
+import { Text } from '@components';
+import { cn } from '@utils/cn';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
-interface ProductCardProps
-  extends React.PropsWithChildren,
-    Partial<API.ProductType> {
-  imgClassName?: string
-  className?: string
-  titleClassName?: string
+interface ProductCardProps extends React.PropsWithChildren, Partial<API.ProductType> {
+  imgClassName?: string;
+  className?: string;
+  titleClassName?: string;
 }
 
 const ColorLabels = ({ colors }: { colors: string[] }) => {
   return (
-    <div className='flex justify-start items-center flex-nowrap'>
+    <div className="flex flex-nowrap items-center justify-start">
       {colors.map((color, idx) => (
         <div
           key={`color_label_${color}_${idx}`}
-          className={cn(
-            'rounded-full w-4 h-4 md:w-6 md:h-6 mr-2 last:mr-0 cursor-pointer',
-            color
-          )}
+          className={cn('mr-2 h-4 w-4 cursor-pointer rounded-full last:mr-0 md:h-6 md:w-6', color)}
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
 const FavoriteLabel = () => {
-  const [liked, setLiked] = useState(false)
+  const [liked, setLiked] = useState(false);
 
   const toggleLiked = () => {
-    setLiked((prev) => !prev)
-  }
+    setLiked((prev) => !prev);
+  };
 
   return (
-    <div
-      onClick={toggleLiked}
-      className='absolute top-2 md:top-4 right-8 cursor-pointer'>
-      {liked ? (
-        <AiFillHeart size={24} className='fill-state-error-light' />
-      ) : (
-        <AiOutlineHeart size={24} />
-      )}
+    <div onClick={toggleLiked} className="absolute right-8 top-2 cursor-pointer md:top-4">
+      {liked ? <AiFillHeart size={24} className="fill-state-error-light" /> : <AiOutlineHeart size={24} />}
     </div>
-  )
-}
+  );
+};
 
 const ProductCard = ({
   title,
@@ -58,33 +47,25 @@ const ProductCard = ({
   titleClassName,
 }: ProductCardProps) => {
   return (
-    <div
-      className={cn(
-        'relative max-w-[392px] space-y-1 space-x-1 mb-10 pr-4',
-        className
-      )}>
-      <img
-        src={img}
-        className={cn('h-auto min-h-[213px] md:max-h-[438px]', imgClassName)}
-        alt='product image'
-      />
+    <div className={cn('relative mb-10 max-w-[392px] space-x-1 space-y-1 pr-4', className)}>
+      <img src={img} className={cn('h-auto min-h-[213px] md:max-h-[438px]', imgClassName)} alt="product image" />
 
       <FavoriteLabel />
 
       {title && (
-        <Text variant='h6' className={titleClassName}>
+        <Text variant="h6" className={titleClassName}>
           {title}
         </Text>
       )}
 
-      <div className='flex justify-between flex-col md:flex-row'>
+      <div className="flex flex-col justify-between md:flex-row">
         {subtitle && (
-          <Text variant='b2' className='self-start md:self-center'>
+          <Text variant="b2" className="self-start md:self-center">
             {subtitle}
           </Text>
         )}
         {price && (
-          <Text variant='h6' className='self-end mr-1 md:self-center'>
+          <Text variant="h6" className="mr-1 self-end md:self-center">
             {price}$
           </Text>
         )}
@@ -92,7 +73,7 @@ const ProductCard = ({
 
       {variants && <ColorLabels colors={variants} />}
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;
