@@ -17,6 +17,8 @@ createServer({
       price: 180,
       variants: ['bg-black ', 'bg-blue-600', 'bg-pink-500'],
       bestseller: true,
+      sizes: ['xs', 'l'],
+      inStock: false,
     });
 
     server.create('product', {
@@ -28,6 +30,8 @@ createServer({
       price: 120,
       variants: ['bg-[#909225]', 'bg-[#19418E]', 'bg-black'],
       bestseller: true,
+      sizes: ['xs'],
+      inStock: false,
     });
     server.create('product', {
       uid: 3,
@@ -38,6 +42,8 @@ createServer({
       price: 210,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]', 'bg-[#748C70]'],
       bestseller: true,
+      sizes: ['xs', 'l'],
+      inStock: false,
     });
     server.create('product', {
       uid: 4,
@@ -48,7 +54,111 @@ createServer({
       price: 110,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: true,
+      sizes: ['m', 'l'],
+      inStock: true,
     });
+
+    server.create('product', {
+      uid: 5,
+      img: 'https://s3-alpha-sig.figma.com/img/056b/73fd/7a1fad28c3196ff6ab02239e7d4d1810?Expires=1698624000&Signature=FeeRDTGRAwXDVa-4e0pbHdqE1gw5LjemHVPrlvP1KEs3AJl2LH9x-lNVkeK9cmhgSojKhgZ4RdA4XQGZnC~xG32jnX0KoxJIBoJ03Hw8cGM-6apfahCExGEMtJMYSZ3nKONcIW1uIDJTgZEbKqbH3Kw206FGFtxLUt-H5BlAF3Nf~HS8F8~QbYyu8b1fV9hkE-hbRJTE58PPTjfvKPZ7RvWtxp56YGlceSaRzYcq8kUHosohI6RzOlTngRncrkqtTl5WUYtD0YVi~TQuf9V6Hr9R8ANZDHizqu9Kr4EC7YaS4GrEeoAOyv8VvZpO97TB--h24rA2j-6FEkAbTrZTXg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Tailored Stretch',
+      subtitle: 'Turn it Up Pants',
+      price: 150,
+      variants: ['bg-[#0C0C0C]'],
+      bestseller: false,
+      sizes: ['xs', 's', 'm', 'l', 'xl'],
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 6,
+      img: 'https://s3-alpha-sig.figma.com/img/2c5e/786c/409340c23aabab40d371256cf856a868?Expires=1698624000&Signature=AsCIOcYgubLEGq21~w34bzaN3atMG~0hGhILVbj0zygKHgAVxMaGR03N23yi-UsdzfU3nuWNkWaKb61iDpwCeai2wdJfwWw~GkBEICidoWTxTtlqssKzGxJ6GoNmodRRgPrPe2DTgMJpp2~e0H6eJWfGcT3vxVIWi3wdOmfSemNvPwaXqofU2UIgNngKm1r2AjyESNGoJcE7k222xvSxDf6AZZKRMa~ubI~Kv4tFyCajQUK4I8~O1LaYVtmLTohZ9N8tuur5jfIJV5pOJx37OoTtd8yeZPfOaY7xv2d5bMP0HSLA5sV1moeUC8xSBCiVapp7f5MZsMl4oG49LoVnAg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Hight Tillie',
+      subtitle: 'Turn it Up Pants',
+      price: 120,
+      variants: ['bg-[#0C0C0C]', 'bg-[#CA2929]', 'bg-[#748C70]'],
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 7,
+      img: 'https://s3-alpha-sig.figma.com/img/53f0/d4a4/89cafc359eb969c39bb2349be2e338ad?Expires=1698624000&Signature=g6Sf3D4klvTrpAAL57t3Xyjkps-1P5HEuJ1lUDuI2huELLG~h0l8TDemFiPaKAewlKpVGbpgeRArCy9SbL0ArSWB-Ud7LzXlzOdX1IGWQFwUoMfhegJ8MDb068K4SdOz2lGY7I8U1STku-Ss0T0krQVWAFgPP8xiWb7HUWG8APxHNgPka7JfxcIXnb5yzwa0TjwIUtC0Mq2QpsYiqxEmRJZeVl4lZJa-jBmfeDO2WCj3lhc1E4achEqo5D8nfowMi4YQcUve8jQq0kSZhqrB3Xn9NZfQCbvjYC1llSAeNQUL0TkUN3a0RHm-ncO4ngg0zvBseScy~JuiIKYn8DRJGQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Casual Wild Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      bestseller: true,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 8,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 9,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      bestseller: true,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 10,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 140,
+      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 11,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 12,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 13,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      bestseller: false,
+      inStock: true,
+    });
+
     server.create('modiweek', {
       uid: 1,
       img: 'https://s3-alpha-sig.figma.com/img/47db/fd79/c6b95428bbbaa4151b79b1371e32ef3c?Expires=1698019200&Signature=Um3QJ4q9k1QPygqB7F36HeLCHZPp3c4-cJz95As9H3wSWgpGrBhfypUk9xaI4BeWsJGIdiz~BebsqP7xV802Ws-saIPTgifpmHJ95cKyjAZq1I~Ex5TxF0Ys7kbx2a4L3MRziWS8bEFSR7Yt-LD36epomhzd18J16TPzvf1i0xNOgb0MMV8WAFiXxZbYFGOedpZa9PciPgKBeFzx6BRV5MxSxeAy1AJ8Dj9E5igGsK1syzNgVRHi6N~5sGibgAek9wLuJSVXD-YP1HY5QMR3BiPAAG~Ncj1L4-jCyCZiQNfEcrx8cOqIXbX9NbPgOrh6FwDTJgEUkr5~qonoo8oXCQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
@@ -92,14 +202,53 @@ createServer({
     this.timing = 1000;
 
     this.get('/products', (schema, request) => {
-      const query = Object.keys(request.queryParams);
+      const paramsKey = Object.keys(request.queryParams);
 
-      if (query.includes('bestseller')) {
+      const baseURL = 'https://www.baseURL.com';
+
+      const params = new URLSearchParams(new URL(request.url, baseURL).search);
+
+      console.log('req', request, paramsKey, params.toString());
+
+      const filter = params.has('filter') ? params.getAll('filter') : null;
+      console.log('filter', filter);
+
+      if (filter === null) {
+        return schema.products.all();
+      }
+
+      const filteredProduct = schema.products.where((p) => {
+        let hasP = ['l'].find((s) => filter.includes(s)) ? false : null;
+        let hasI = filter.includes('inStock') ? false : null;
+
+        if (p?.sizes && hasP !== null) {
+          hasP = typeof p.sizes.find((pSize) => filter.includes(pSize)) === 'string';
+        }
+
+        if (p?.inStock && hasI !== null) {
+          hasI = p.inStock;
+        }
+
+        console.log(p?.uid, { hasP, hasI });
+
+        if (hasP === null) {
+          return hasI;
+        }
+
+        if (hasI === null) {
+          return hasP;
+        }
+
+        return hasP && hasI;
+      });
+
+      if (paramsKey.includes('bestseller')) {
         return schema.products.where({ bestseller: true });
       }
 
-      return schema.products.all();
+      return filteredProduct;
     });
+
     this.get('/modiweeks', (schema) => {
       return schema.modiweeks.all();
     });

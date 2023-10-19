@@ -38,6 +38,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Pages.Landing />,
+        loader: Pages.LandingLoader,
       },
       { path: 'login', element: <Pages.Login /> },
       { path: 'register', element: <>a</> },
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <Pages.Products />,
+        action: Pages.ProductsActions,
         children: [
           {
             path: ':id',

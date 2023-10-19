@@ -8,8 +8,18 @@ const stringifyParamsValue = (params: Record<string, unknown>) => {
 };
 
 export const API = {
-  getProducts: async (params?: { bestseller: true }) => {
-    const url = params ? '/api/products?' + new URLSearchParams(stringifyParamsValue(params)) : '/api/products';
+  getProducts: async (params?: { bestseller: true } | URLSearchParams) => {
+    let url = '/api/products';
+
+    if (params !== undefined && 'bestseller' in params) {
+      url = url + '?' + new URLSearchParams(stringifyParamsValue(params));
+    }
+
+    if (params instanceof URLSearchParams) {
+      url = url + '?' + params.toString();
+    }
+
+    console.log('url', url);
 
     const res = await fetch(url);
 
@@ -23,7 +33,7 @@ export const API = {
 
     const data = await res.json();
 
-    return data as { products: API.ProductType[] };
+    return data.products as API.ProductType[];
   },
 
   getModiweek: async () => {
@@ -38,7 +48,6 @@ export const API = {
     }
     const data = await res.json();
 
-    console.log('data', data);
-    return data as { modiweeks: API.ModiweekType[] };
+    return data.modiweeks as API.ModiweekType[];
   },
 };

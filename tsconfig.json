@@ -22,7 +22,6 @@
 
     "baseUrl": "./src/",
     "paths": {
-      "@src/*": ["*"],
       "@routes/*": ["routes/*"],
       "@components/*": ["components/*"],
       "@components": ["components"],
@@ -33,7 +32,8 @@
       "@api/*": ["api/*"],
       "@api": ["api"],
       "@utils/*": ["utils/*"],
-      "@utils": ["utils"]
+      "@utils": ["utils"],
+      "@src/*": ["*"]
     }
   },
   "include": ["src"],

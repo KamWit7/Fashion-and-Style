@@ -46,10 +46,14 @@ const ProductCard = ({
   imgClassName,
   titleClassName,
 }: ProductCardProps) => {
-  return (
-    <div className={cn('relative mb-10 max-w-[392px] space-x-1 space-y-1 pr-4', className)}>
-      <img src={img} className={cn('h-auto min-h-[213px] md:max-h-[438px]', imgClassName)} alt="product image" />
+  const classes = cn('relative mb-10  space-x-1 space-y-1 pr-4', className);
 
+  return (
+    <div className={classes}>
+      {/* Temp. color for bg */}
+      <div className="relative min-h-[213px] overflow-hidden bg-red-100 sm:min-h-[438px]">
+        <img src={img} className={cn('absolute -z-10 h-auto max-w-full', imgClassName)} alt="product image" />
+      </div>
       <FavoriteLabel />
 
       {title && (
