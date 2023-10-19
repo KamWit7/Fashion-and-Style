@@ -28,7 +28,7 @@ const Checkbox = ({ label, name, ...rest }: CheckboxProps) => {
         )}
         {...rest}
       />
-      <label htmlFor={`checkbox_${id}`} className="ml-2 cursor-pointer font-montserrat text-12 font-semibold">
+      <label htmlFor={`checkbox_${id}`} className="cursor-pointer pl-2 font-montserrat text-12 font-semibold">
         {label}
       </label>
     </div>

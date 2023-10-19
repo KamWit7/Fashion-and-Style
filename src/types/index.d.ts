@@ -9,6 +9,8 @@ namespace API {
     price: number;
     variants: string[];
     bestseller: boolean;
+    sizes: string[];
+    inStock: boolean;
   };
 
   type ModiweekType = Pick<ProductType, 'uid' | 'img' | 'title'>;

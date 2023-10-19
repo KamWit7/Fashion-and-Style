@@ -8,8 +8,18 @@ const stringifyParamsValue = (params: Record<string, unknown>) => {
 };
 
 export const API = {
-  getProducts: async (params?: { bestseller: true }) => {
-    const url = params ? '/api/products?' + new URLSearchParams(stringifyParamsValue(params)) : '/api/products';
+  getProducts: async (params?: { bestseller: true } | URLSearchParams) => {
+    let url = '/api/products';
+
+    if (params !== undefined && 'bestseller' in params) {
+      url = url + '?' + new URLSearchParams(stringifyParamsValue(params));
+    }
+
+    if (params instanceof URLSearchParams) {
+      url = url + '?' + params.toString();
+    }
+
+    console.log('url', url);
 
     const res = await fetch(url);
 

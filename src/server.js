@@ -17,6 +17,8 @@ createServer({
       price: 180,
       variants: ['bg-black ', 'bg-blue-600', 'bg-pink-500'],
       bestseller: true,
+      sizes: ['xs', 'l'],
+      inStock: false,
     });
 
     server.create('product', {
@@ -28,6 +30,8 @@ createServer({
       price: 120,
       variants: ['bg-[#909225]', 'bg-[#19418E]', 'bg-black'],
       bestseller: true,
+      sizes: ['xs'],
+      inStock: false,
     });
     server.create('product', {
       uid: 3,
@@ -38,6 +42,8 @@ createServer({
       price: 210,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]', 'bg-[#748C70]'],
       bestseller: true,
+      sizes: ['xs', 'l'],
+      inStock: false,
     });
     server.create('product', {
       uid: 4,
@@ -48,6 +54,8 @@ createServer({
       price: 110,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: true,
+      sizes: ['m', 'l'],
+      inStock: true,
     });
 
     server.create('product', {
@@ -59,6 +67,8 @@ createServer({
       price: 150,
       variants: ['bg-[#0C0C0C]'],
       bestseller: false,
+      sizes: ['xs', 's', 'm', 'l', 'xl'],
+      inStock: true,
     });
     server.create('product', {
       uid: 6,
@@ -69,6 +79,7 @@ createServer({
       price: 120,
       variants: ['bg-[#0C0C0C]', 'bg-[#CA2929]', 'bg-[#748C70]'],
       bestseller: false,
+      inStock: true,
     });
     server.create('product', {
       uid: 7,
@@ -79,6 +90,7 @@ createServer({
       price: 110,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: true,
+      inStock: true,
     });
     server.create('product', {
       uid: 8,
@@ -89,6 +101,7 @@ createServer({
       price: 110,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: false,
+      inStock: true,
     });
     server.create('product', {
       uid: 9,
@@ -99,6 +112,7 @@ createServer({
       price: 110,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: true,
+      inStock: true,
     });
     server.create('product', {
       uid: 10,
@@ -109,6 +123,7 @@ createServer({
       price: 140,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: false,
+      inStock: true,
     });
     server.create('product', {
       uid: 11,
@@ -119,6 +134,7 @@ createServer({
       price: 110,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: false,
+      inStock: true,
     });
     server.create('product', {
       uid: 12,
@@ -129,6 +145,7 @@ createServer({
       price: 110,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: false,
+      inStock: true,
     });
     server.create('product', {
       uid: 13,
@@ -139,6 +156,7 @@ createServer({
       price: 110,
       variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: false,
+      inStock: true,
     });
 
     server.create('modiweek', {
@@ -181,17 +199,56 @@ createServer({
   routes() {
     this.namespace = 'api';
     this.logging = false;
-    this.timing = 3000;
+    this.timing = 1000;
 
     this.get('/products', (schema, request) => {
-      const query = Object.keys(request.queryParams);
+      const paramsKey = Object.keys(request.queryParams);
 
-      if (query.includes('bestseller')) {
+      const baseURL = 'https://www.baseURL.com';
+
+      const params = new URLSearchParams(new URL(request.url, baseURL).search);
+
+      console.log('req', request, paramsKey, params.toString());
+
+      const filter = params.has('filter') ? params.getAll('filter') : null;
+      console.log('filter', filter);
+
+      if (filter === null) {
+        return schema.products.all();
+      }
+
+      const filteredProduct = schema.products.where((p) => {
+        let hasP = ['l'].find((s) => filter.includes(s)) ? false : null;
+        let hasI = filter.includes('inStock') ? false : null;
+
+        if (p?.sizes && hasP !== null) {
+          hasP = typeof p.sizes.find((pSize) => filter.includes(pSize)) === 'string';
+        }
+
+        if (p?.inStock && hasI !== null) {
+          hasI = p.inStock;
+        }
+
+        console.log(p?.uid, { hasP, hasI });
+
+        if (hasP === null) {
+          return hasI;
+        }
+
+        if (hasI === null) {
+          return hasP;
+        }
+
+        return hasP && hasI;
+      });
+
+      if (paramsKey.includes('bestseller')) {
         return schema.products.where({ bestseller: true });
       }
 
-      return schema.products.all();
+      return filteredProduct;
     });
+
     this.get('/modiweeks', (schema) => {
       return schema.modiweeks.all();
     });
