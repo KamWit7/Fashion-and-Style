@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { createServer, Model } from 'miragejs';
+import { isEmpty } from '@utils/isEmpty';
 
 createServer({
   models: {
@@ -15,7 +16,7 @@ createServer({
       title: 'Tailored Stretch',
       subtitle: 'Turn it Up Pants',
       price: 180,
-      variants: ['bg-black ', 'bg-blue-600', 'bg-pink-500'],
+      colors: ['#DEB222'],
       bestseller: true,
       sizes: ['xs', 'l'],
       inStock: false,
@@ -28,7 +29,7 @@ createServer({
       title: 'Technical Silk',
       subtitle: 'Make a Splash',
       price: 120,
-      variants: ['bg-[#909225]', 'bg-[#19418E]', 'bg-black'],
+      colors: ['#909225', '#19418E'],
       bestseller: true,
       sizes: ['xs'],
       inStock: false,
@@ -40,7 +41,7 @@ createServer({
       title: 'Cool Weave',
       subtitle: 'Anywhere Dress',
       price: 210,
-      variants: ['bg-[#D0A5EA]', 'bg-[#909225]', 'bg-[#748C70]'],
+      colors: ['#D0A5EA', '#909225', '#748C70'],
       bestseller: true,
       sizes: ['xs', 'l'],
       inStock: false,
@@ -52,7 +53,7 @@ createServer({
       title: 'Elastic Waist',
       subtitle: 'Turn it Up Pants',
       price: 110,
-      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      colors: ['#D0A5EA', '#909225'],
       bestseller: true,
       sizes: ['m', 'l'],
       inStock: true,
@@ -65,7 +66,7 @@ createServer({
       title: 'Tailored Stretch',
       subtitle: 'Turn it Up Pants',
       price: 150,
-      variants: ['bg-[#0C0C0C]'],
+      colors: ['#0C0C0C'],
       bestseller: false,
       sizes: ['xs', 's', 'm', 'l', 'xl'],
       inStock: true,
@@ -77,7 +78,7 @@ createServer({
       title: 'Hight Tillie',
       subtitle: 'Turn it Up Pants',
       price: 120,
-      variants: ['bg-[#0C0C0C]', 'bg-[#CA2929]', 'bg-[#748C70]'],
+      colors: ['#0C0C0C', '#CA2929', '#748C70'],
       bestseller: false,
       inStock: true,
     });
@@ -88,7 +89,7 @@ createServer({
       title: 'Casual Wild Leg',
       subtitle: 'Turn it Up Pants',
       price: 110,
-      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      colors: ['#D0A5EA', '#909225'],
       bestseller: true,
       inStock: true,
     });
@@ -99,7 +100,7 @@ createServer({
       title: 'Line Wide Leg',
       subtitle: 'Turn it Up Pants',
       price: 110,
-      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      colors: ['#D0A5EA', '#909225'],
       bestseller: false,
       inStock: true,
     });
@@ -110,7 +111,7 @@ createServer({
       title: 'Line Wide Leg',
       subtitle: 'Turn it Up Pants',
       price: 110,
-      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      colors: ['#D0A5EA', '#909225'],
       bestseller: true,
       inStock: true,
     });
@@ -121,7 +122,7 @@ createServer({
       title: 'Line Wide Leg',
       subtitle: 'Turn it Up Pants',
       price: 140,
-      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      colors: ['#D0A5EA', '#909225'],
       bestseller: false,
       inStock: true,
     });
@@ -132,7 +133,7 @@ createServer({
       title: 'Line Wide Leg',
       subtitle: 'Turn it Up Pants',
       price: 110,
-      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      colors: ['#D0A5EA', '#909225'],
       bestseller: false,
       inStock: true,
     });
@@ -143,7 +144,7 @@ createServer({
       title: 'Line Wide Leg',
       subtitle: 'Turn it Up Pants',
       price: 110,
-      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
+      colors: ['#D0A5EA', '#909225'],
       bestseller: false,
       inStock: true,
     });
@@ -154,7 +155,6 @@ createServer({
       title: 'Line Wide Leg',
       subtitle: 'Turn it Up Pants',
       price: 110,
-      variants: ['bg-[#D0A5EA]', 'bg-[#909225]'],
       bestseller: false,
       inStock: true,
     });
@@ -203,43 +203,34 @@ createServer({
 
     this.get('/products', (schema, request) => {
       const paramsKey = Object.keys(request.queryParams);
-
       const baseURL = 'https://www.baseURL.com';
-
       const params = new URLSearchParams(new URL(request.url, baseURL).search);
+      const filters = {};
 
-      console.log('req', request, paramsKey, params.toString());
+      for (const [key, value] of params.entries()) {
+        filters[key] = [...(filters?.[key] ?? []), value];
+      }
 
-      const filter = params.has('filter') ? params.getAll('filter') : null;
-      console.log('filter', filter);
-
-      if (filter === null) {
+      if (isEmpty(filters)) {
         return schema.products.all();
       }
 
       const filteredProduct = schema.products.where((p) => {
-        let hasP = ['l'].find((s) => filter.includes(s)) ? false : null;
-        let hasI = filter.includes('inStock') ? false : null;
+        const f = Object.entries(filters).map(([filterName, filterValue]) => {
+          const productValue = p[filterName];
 
-        if (p?.sizes && hasP !== null) {
-          hasP = typeof p.sizes.find((pSize) => filter.includes(pSize)) === 'string';
-        }
+          if (typeof productValue === 'boolean') {
+            return productValue === Boolean(filterValue);
+          }
 
-        if (p?.inStock && hasI !== null) {
-          hasI = p.inStock;
-        }
+          if (Array.isArray(productValue)) {
+            return typeof filterValue.find((v) => productValue?.includes(v)) === 'string';
+          }
 
-        console.log(p?.uid, { hasP, hasI });
+          return false;
+        });
 
-        if (hasP === null) {
-          return hasI;
-        }
-
-        if (hasI === null) {
-          return hasP;
-        }
-
-        return hasP && hasI;
+        return !f.includes(false);
       });
 
       if (paramsKey.includes('bestseller')) {

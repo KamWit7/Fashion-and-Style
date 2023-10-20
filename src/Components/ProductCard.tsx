@@ -15,7 +15,8 @@ const ColorLabels = ({ colors }: { colors: string[] }) => {
       {colors.map((color, idx) => (
         <div
           key={`color_label_${color}_${idx}`}
-          className={cn('mr-2 h-4 w-4 cursor-pointer rounded-full last:mr-0 md:h-6 md:w-6', color)}
+          className={cn('mr-2 h-4 w-4 cursor-pointer rounded-full last:mr-0 md:h-6 md:w-6')}
+          style={{ background: color }}
         />
       ))}
     </div>
@@ -41,7 +42,7 @@ const ProductCard = ({
   subtitle,
   img,
   price,
-  variants,
+  colors,
   className,
   imgClassName,
   titleClassName,
@@ -75,7 +76,7 @@ const ProductCard = ({
         )}
       </div>
 
-      {variants && <ColorLabels colors={variants} />}
+      {colors && <ColorLabels colors={colors} />}
     </div>
   );
 };
