@@ -199,7 +199,7 @@ createServer({
   routes() {
     this.namespace = 'api';
     this.logging = false;
-    this.timing = 1000;
+    this.timing = 3000;
 
     this.get('/products', (schema, request) => {
       const paramsKey = Object.keys(request.queryParams);
@@ -220,7 +220,7 @@ createServer({
           const productValue = p[filterName];
 
           if (typeof productValue === 'boolean') {
-            return productValue === Boolean(filterValue);
+            return filterValue.find((v) => productValue === JSON.parse(v)) !== undefined;
           }
 
           if (Array.isArray(productValue)) {

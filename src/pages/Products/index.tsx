@@ -1,22 +1,21 @@
-import { Center, Filters, ProductCard } from '@components/index';
-import { useFetcher } from 'react-router-dom';
+import { Center, Filters, ProductCard, Text } from '@components';
+import { useLoaderData } from 'react-router-dom';
 
 const Products = () => {
-  const fetcher = useFetcher<API.ProductType[]>();
+  const products = useLoaderData() as API.ProductType[];
 
-  const products = fetcher.data ?? [];
   const productCount = products.length;
 
   return (
     <Center>
-      <div>Search</div>
-
-      <Filters fetcher={fetcher} />
+      <Text variant="b1" className="m-auto w-full py-8 text-center">
+        {productCount} Items
+      </Text>
 
       <div className="flex justify-between gap-6">
-        <div className="flex-grow basis-2/3">
-          <div>Items: {productCount}</div>
+        <Filters className="flex flex-grow basis-1/3 flex-col gap-4" />
 
+        <div className="flex-grow basis-2/3">
           <div className="flex flex-wrap justify-between gap-6 bg-emerald-50">
             {products.map((p, idx) => (
               <ProductCard

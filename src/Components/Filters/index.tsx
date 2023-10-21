@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
-import { AccordionItem, Checkbox } from '@components';
-import { FetcherWithComponents, useLocation, useSearchParams } from 'react-router-dom';
+import { AccordionItem, Button, Checkbox, Text } from '@components';
+import { useSearchParams } from 'react-router-dom';
 
-interface FiltersProps {
-  fetcher: FetcherWithComponents<API.ProductType[]>;
-}
+interface FiltersProps {}
 type CheckboxValueType = { value: string; label: string }[];
 type CheckboxProps = Record<string, CheckboxValueType>;
 
@@ -44,7 +42,7 @@ const createInitialValueFn = (searchParams: URLSearchParams) => (filter: Checkbo
     });
   });
 
-  return initialValue;
+  return initialValue as Record<string, boolean>;
 };
 
 // TODO: better typing for initialValue
@@ -56,9 +54,9 @@ const CheckboxRegister = ({
   initialValue: Record<string, boolean>;
 }) => {
   const register = (name: string, value?: string) => {
-    const defaultChecked = Boolean(value && initialValue?.[value as keyof typeof initialValue]);
+    const checked = typeof value !== 'undefined' ? initialValue?.[value as keyof typeof initialValue] : false;
 
-    return { name, defaultChecked, value };
+    return { name, value, checked, onChange: () => {} };
   };
 
   return Object.entries(filter).map(([filterName, filterArr]) => {
@@ -72,9 +70,10 @@ const CheckboxRegister = ({
   });
 };
 
-const Filters = ({ fetcher }: FiltersProps) => {
+const isOpenOnInit = (initialValue: Record<string, boolean>) => Object.values(initialValue).includes(true);
+
+const Filters = ({ className }: FiltersProps & React.HTMLAttributes<HTMLDivElement>) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
 
   const getInitialSearchParams = createInitialValueFn(searchParams);
 
@@ -82,7 +81,13 @@ const Filters = ({ fetcher }: FiltersProps) => {
   const stocksIV = getInitialSearchParams(stocks);
   const colorsIV = getInitialSearchParams(colors);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  console.log(
+    Object.entries(colorsIV)
+      .filter(([, isOn]) => isOn)
+      .map(([filterValue]) => colors.colors.find((color) => color.value === filterValue))
+  );
+
+  function handleFilterChange(e: React.FormEvent<HTMLFormElement>) {
     const { name, checked, value } = e.target as HTMLInputElement;
 
     if (checked) {
@@ -94,30 +99,37 @@ const Filters = ({ fetcher }: FiltersProps) => {
     }
 
     setSearchParams(searchParams);
-
-    fetcher.submit(searchParams, { method: 'PATCH', action: location.pathname });
   }
 
+  const clearSearchParams = () => {
+    setSearchParams(new URLSearchParams());
+  };
+
   return (
-    <fetcher.Form
-      onChange={(e) => {
-        handleSubmit(e);
-      }}
-    >
-      <div className="flex-grow basis-1/3">
-        <AccordionItem title="Sort By">
-          <CheckboxRegister filter={stocks} initialValue={stocksIV} />
-        </AccordionItem>
+    <form className={className} onChange={handleFilterChange}>
+      <Text variant="h3" className="mb-4">
+        Filters
+      </Text>
 
-        <AccordionItem title="Color">
-          <CheckboxRegister filter={colors} initialValue={colorsIV} />
-        </AccordionItem>
-
-        <AccordionItem title="Size">
-          <CheckboxRegister filter={sizes} initialValue={sizesIV} />
-        </AccordionItem>
+      <div className="flex justify-between">
+        <Button type="button" variant="text" onClick={clearSearchParams}>
+          Clear Filter
+        </Button>
+        <Button>Applied Filters</Button>
       </div>
-    </fetcher.Form>
+
+      <AccordionItem title="Sort By" initialState={isOpenOnInit(stocksIV)}>
+        <CheckboxRegister filter={stocks} initialValue={stocksIV} />
+      </AccordionItem>
+
+      <AccordionItem title="Color" initialState={isOpenOnInit(colorsIV)}>
+        <CheckboxRegister filter={colors} initialValue={colorsIV} />
+      </AccordionItem>
+
+      <AccordionItem title="Size" initialState={isOpenOnInit(sizesIV)}>
+        <CheckboxRegister filter={sizes} initialValue={sizesIV} />
+      </AccordionItem>
+    </form>
   );
 };
 

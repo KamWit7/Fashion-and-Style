@@ -37,7 +37,7 @@ const Button = ({
   className,
   variant = 'fill',
   size = 'M',
-  invertOnDark = true,
+  invertOnDark = false,
   children,
   iconBefore,
   iconAfter,
