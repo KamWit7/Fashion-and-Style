@@ -13,10 +13,10 @@ const Products = () => {
       </Text>
 
       <div className="flex justify-between gap-6">
-        <Filters className="flex flex-grow basis-1/3 flex-col gap-4" />
+        <Filters className="mb-12 flex flex-grow basis-1/3 flex-col gap-4" />
 
         <div className="flex-grow basis-2/3">
-          <div className="flex flex-wrap justify-between gap-6 bg-emerald-50">
+          <div className="flex flex-wrap justify-between gap-6">
             {products.map((p, idx) => (
               <ProductCard
                 key={`product_card_${idx}_${p.title}`}
