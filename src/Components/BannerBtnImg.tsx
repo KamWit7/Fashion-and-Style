@@ -16,7 +16,9 @@ const ImgWithButton = ({ src, className, children, alignBtn = 'right', imgH, isR
         src={src}
         alt="collection img"
       />
-      <Button className={cn('absolute bottom-4', alignBtn === 'right' ? 'right-4' : 'left-4')}>{children}</Button>
+      <Button className={cn('absolute bottom-4', alignBtn === 'right' ? 'right-4' : 'left-4')} invertOnDark>
+        {children}
+      </Button>
     </div>
   );
 };

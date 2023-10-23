@@ -7,6 +7,7 @@ interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>
 
 const Checkbox = ({ label, name, ...rest }: CheckboxProps) => {
   const id = useId();
+
   return (
     <div className="flex items-center justify-start gap-2">
       <input
@@ -19,6 +20,7 @@ const Checkbox = ({ label, name, ...rest }: CheckboxProps) => {
           'before:absolute before:top-0 before:inline-block after:left-0',
           'before:h-4 before:w-4 before:cursor-pointer before:bg-white',
           'before:transition-bg before:duration-200 before:ease-in-out checked:before:bg-primary-600',
+          'before:border before:border-primary-200',
 
           'after:absolute after:left-0 after:top-0 after:inline-block',
           'after:h-0 after:w-0 after:checked:h-3 after:checked:w-2',
@@ -28,7 +30,7 @@ const Checkbox = ({ label, name, ...rest }: CheckboxProps) => {
         )}
         {...rest}
       />
-      <label htmlFor={`checkbox_${id}`} className="cursor-pointer pl-2 font-montserrat text-12 font-semibold">
+      <label htmlFor={`checkbox_${id}`} className=" w-full cursor-pointer pl-2 font-montserrat text-12 font-semibold">
         {label}
       </label>
     </div>

@@ -46,7 +46,7 @@ const router = createBrowserRouter([
       {
         path: 'products',
         element: <Pages.Products />,
-        action: Pages.ProductsActions,
+        loader: Pages.ProductsLoader,
         children: [
           {
             path: ':id',

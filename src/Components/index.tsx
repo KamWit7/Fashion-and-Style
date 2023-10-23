@@ -12,3 +12,4 @@ export { default as Checkbox } from '@components/form/Checkbox';
 export { default as Input } from '@components/form/Input';
 export { default as Accordion } from '@components/Accordion';
 export { default as AccordionItem } from '@components/Accordion/AccordionItem';
+export { default as Filters } from '@components/Filters';

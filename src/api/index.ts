@@ -19,8 +19,6 @@ export const API = {
       url = url + '?' + params.toString();
     }
 
-    console.log('url', url);
-
     const res = await fetch(url);
 
     if (!res.ok) {

@@ -7,7 +7,7 @@ namespace API {
     title: string;
     subtitle: string;
     price: number;
-    variants: string[];
+    colors: string[];
     bestseller: boolean;
     sizes: string[];
     inStock: boolean;

@@ -57,7 +57,7 @@ const Landing = () => {
             <Text variant="p1" className="mb-7 font-cabin capitalize italic">
               Elegance in simplicity, <br /> Earth’s harmony
             </Text>
-            <Button>New in</Button>
+            <Button invertOnDark>New in</Button>
           </div>
         </Center>
       </FullScreenImg>
