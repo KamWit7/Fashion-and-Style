@@ -1,4 +1,4 @@
-import { CheckboxProps } from './types';
+import { CheckboxProps } from '@components/Filters/types';
 
 export const sizes: CheckboxProps = {
   sizes: [

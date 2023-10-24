@@ -1,13 +1,13 @@
 import React from 'react';
 import { AccordionItem, Text } from '@components';
 import { useSearchParams } from 'react-router-dom';
-import { createCheckboxState, getActiveFilters, isOpenOnInit } from './utils';
-import { colors, sizes, stocks } from './consts';
-import CheckboxRegister from './components/CheckboxRegister';
-import UsedFilters from './components/UsedFilters';
-import { FilterBtnType, FiltersType } from './types';
+import { createCheckboxState, getActiveFilters, isOpenOnInit } from '@components/Filters/utils';
+import { colors, sizes, stocks } from '@components/Filters/consts';
+import CheckboxRegister from '@components/Filters/components/CheckboxRegister';
+import { FilterBtnType, FiltersType } from '@components/Filters/types';
 import { isEmpty } from '@utils/isEmpty';
-import FiltersButton from './components/FiltersButton';
+import FiltersButton from '@components/Filters/components/FiltersButton';
+import UsedFilters from '@components/Filters/components/UsedFilters';
 
 const Filters = ({ className, isMobile, setIsOpen }: FiltersType & React.HTMLAttributes<HTMLDivElement>) => {
   const [searchParams, setSearchParams] = useSearchParams();

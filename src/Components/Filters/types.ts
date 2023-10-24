@@ -1,5 +1,5 @@
 import useToggle from '@utils/useToggle';
-import { getActiveFilters } from './utils';
+import { getActiveFilters } from '@components/Filters/utils';
 
 export type CheckboxValueType = { value: string; label: string }[];
 export type CheckboxProps = Record<string, CheckboxValueType>;

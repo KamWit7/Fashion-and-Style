@@ -1,7 +1,7 @@
 import { Button } from '@components';
 import { AiOutlinePlus } from 'react-icons/ai';
-import { UsedFiltersProps } from '../types';
-import FiltersButton from './FiltersButton';
+import { UsedFiltersProps } from '@components/Filters/types';
+import FiltersButton from '@components/Filters/components/FiltersButton';
 
 const UsedFilters = ({ appliedFilters, clearSearchParams, ...rest }: UsedFiltersProps) => {
   return (
@@ -23,7 +23,11 @@ const UsedFilters = ({ appliedFilters, clearSearchParams, ...rest }: UsedFilters
         })}
       </div>
 
-      <FiltersButton className="mt-2 hidden justify-between md:flex" onClear={() => clearSearchParams()} title="Applied Filters"  />
+      <FiltersButton
+        className="mt-2 hidden justify-between md:flex"
+        onClear={() => clearSearchParams()}
+        title="Applied Filters"
+      />
     </div>
   );
 };

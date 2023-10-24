@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Checkbox } from '@components';
-import { CheckboxProps } from '../types';
+import { CheckboxProps } from '@components/Filters/types';
 
 // TODO: better typing for initialValue
 const CheckboxRegister = ({
