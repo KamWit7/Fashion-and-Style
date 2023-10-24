@@ -1,5 +1,5 @@
-import { colors, sizes, stocks } from './consts';
-import { CheckboxProps } from './types';
+import { colors, sizes, stocks } from '@components/Filters/consts';
+import { CheckboxProps } from '@components/Filters/types';
 
 export const isOpenOnInit = (initialValue: Record<string, boolean>) => Object.values(initialValue).includes(true);
 
