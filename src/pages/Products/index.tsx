@@ -1,4 +1,4 @@
-import { Center, Filters, ProductCard, Text } from '@components';
+import { Center, Filters, MobileFilters, ProductCard, Text } from '@components';
 import { useLoaderData } from 'react-router-dom';
 
 const Products = () => {
@@ -8,15 +8,17 @@ const Products = () => {
 
   return (
     <Center>
-      <Text variant="b1" className="m-auto w-full py-8 text-center">
+      <Text variant="b1" className="m-auto hidden w-full py-8 text-center md:inline-block">
         {productCount} Items
       </Text>
 
-      <div className="flex justify-between gap-6">
-        <Filters className="mb-12 flex flex-grow basis-1/3 flex-col gap-4" />
+      <MobileFilters />
 
-        <div className="flex-grow basis-2/3">
-          <div className="flex flex-wrap justify-between gap-6">
+      <div className="flex flex-col justify-between md:flex-row md:gap-6">
+        <Filters className="mb-12 flex flex-grow flex-col gap-4 md:basis-1/3" />
+
+        <div className="flex-grow md:basis-2/3">
+          <div className="flex flex-wrap justify-center gap-6 md:justify-between">
             {products.map((p, idx) => (
               <ProductCard
                 key={`product_card_${idx}_${p.title}`}

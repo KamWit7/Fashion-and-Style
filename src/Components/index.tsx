@@ -13,3 +13,6 @@ export { default as Input } from '@components/form/Input';
 export { default as Accordion } from '@components/Accordion';
 export { default as AccordionItem } from '@components/Accordion/AccordionItem';
 export { default as Filters } from '@components/Filters';
+export { default as MobileFilters } from '@components/Filters/MobileFilters';
+export { default as Modal } from '@components/Modal';
+export { default as Drawer } from '@components/Drawer';

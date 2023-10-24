@@ -45,7 +45,7 @@ const getVariantClasses = (variant: Variants): TagProps => {
       };
     case 'h3':
       return {
-        classes: 'text-20 md:text-32 font-bold', // +
+        classes: 'text-24 md:text-32 font-bold', // +
         tag: 'h3',
       };
     case 'h4':
