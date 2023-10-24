@@ -1,14 +1,10 @@
-import { Button, Center, Drawer, Filters, ProductCard, Text } from '@components';
+import { Center, Filters, MobileFilters, ProductCard, Text } from '@components';
 import { useLoaderData } from 'react-router-dom';
-import { MdTune } from 'react-icons/md';
-import useToggle from '@utils/useToggle';
 
 const Products = () => {
   const products = useLoaderData() as API.ProductType[];
-  const [isOpen, setIsOpen] = useToggle(false);
 
   const productCount = products.length;
-  console.log(isOpen);
 
   return (
     <Center>
@@ -16,21 +12,9 @@ const Products = () => {
         {productCount} Items
       </Text>
 
-      <Drawer isOpen={isOpen} onClose={setIsOpen.of}>
-        Some BOdyyy
-      </Drawer>
+      <MobileFilters />
 
-      <Button
-        type="button"
-        variant="text"
-        iconBefore={<MdTune size={16} />}
-        className="mx-auto my-4 min-w-[100px] text-black"
-        onClick={setIsOpen.toggle}
-      >
-        <Text variant="b1">Filter</Text>
-      </Button>
-
-      <div className="flex justify-between md:gap-6">
+      <div className="flex flex-col justify-between md:flex-row md:gap-6">
         <Filters className="mb-12 flex flex-grow flex-col gap-4 md:basis-1/3" />
 
         <div className="flex-grow md:basis-2/3">

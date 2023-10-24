@@ -2,6 +2,7 @@ import { twMerge } from 'tailwind-merge';
 import { PropsWithChildren, createElement, useMemo } from 'react';
 import { Link, To } from 'react-router-dom';
 import { sizeClasses, variantClasses, variantClassesDark } from '@components/Button/styles';
+import { cn } from '@utils/cn';
 
 export type Variants = 'fill' | 'stroke' | 'text';
 export type Size = 'M' | 'L';
@@ -50,13 +51,13 @@ const Button = ({
     [variant, invertOnDark, size]
   );
 
-  const cN = twMerge(classes, 'px-4 flex-center', className);
+  const cN = twMerge(classes, 'px-4 flex items-center justify-between', className);
 
   const childrenComponent = (
     <>
-      <div className="pr-1">{iconBefore && iconBefore}</div>
+      <span className={cn(children && 'pr-1')}>{iconBefore && iconBefore}</span>
       {children}
-      <div className="pl-1">{iconAfter && iconAfter}</div>
+      <span className={cn(children && 'pl-1')}>{iconAfter && iconAfter}</span>
     </>
   );
 

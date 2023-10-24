@@ -9,11 +9,16 @@ interface AccordionProps {
   initialState?: boolean;
 }
 
-const AccordionItem = ({ title, children, initialState }: React.PropsWithChildren<AccordionProps>) => {
+const AccordionItem = ({
+  title,
+  children,
+  initialState,
+  className,
+}: React.PropsWithChildren<AccordionProps> & React.HTMLAttributes<HTMLDivElement>) => {
   const [flag, setFlag] = useBoolean(initialState);
 
   return (
-    <div className={cn('cursor-pointer border', flag ? 'border-primary-400' : 'border-primary-600')}>
+    <div className={cn('cursor-pointer border', flag ? 'border-primary-400' : 'border-primary-600', className)}>
       <div
         className={cn(
           'flex items-center justify-between p-4',
@@ -22,7 +27,7 @@ const AccordionItem = ({ title, children, initialState }: React.PropsWithChildre
         )}
         onClick={setFlag.toggle}
       >
-        <Text variant="h5" className="text-12 font-bold">
+        <Text variant="h5" className="text-16 font-bold">
           {title}
         </Text>
 
