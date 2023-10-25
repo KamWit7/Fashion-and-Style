@@ -23,11 +23,7 @@ const UsedFilters = ({ appliedFilters, clearSearchParams, ...rest }: UsedFilters
         })}
       </div>
 
-      <FiltersButton
-        className="mt-2 hidden justify-between md:flex"
-        onClear={() => clearSearchParams()}
-        title="Applied Filters"
-      />
+      <FiltersButton className="mt-2 hidden md:flex" onClear={() => clearSearchParams()} title="Applied Filters" />
     </div>
   );
 };

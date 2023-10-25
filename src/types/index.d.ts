@@ -1,5 +1,11 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 namespace API {
+  type PaginationType = {
+    totalCount: number;
+    pageSize: number;
+    currentPage: number;
+  };
+
   type ProductType = {
     uid: number;
     img: string;

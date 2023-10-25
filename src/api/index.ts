@@ -31,7 +31,7 @@ export const API = {
 
     const data = await res.json();
 
-    return data.products as API.ProductType[];
+    return data as { products: API.ProductType[]; pagination: API.PaginationType };
   },
 
   getModiweek: async () => {

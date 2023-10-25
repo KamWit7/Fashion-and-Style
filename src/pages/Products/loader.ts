@@ -5,6 +5,7 @@ export default (async ({ request }) => {
   const searchParams = new URLSearchParams(new URL(request.url).search);
 
   const data = await API.getProducts(searchParams);
+  console.log('data', data);
 
   return data;
 }) satisfies LoaderFunction;
