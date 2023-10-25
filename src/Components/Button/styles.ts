@@ -25,6 +25,6 @@ export const variantClassesDark = {
 };
 
 export const sizeClasses = {
-  L: ['min-w-[202px] py-[9.5px]'],
-  M: ['min-w-[184px] py-2'],
+  L: ['py-[9.5px]'],
+  M: ['py-2'],
 };

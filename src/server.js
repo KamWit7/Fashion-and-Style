@@ -211,8 +211,16 @@ createServer({
         filters[key] = [...(filters?.[key] ?? []), value];
       }
 
-      if (isEmpty(filters)) {
-        return schema.products.all();
+      const pageSize = 10;
+      let totalCount = 0;
+      const { page: currentPage, ...rest } = filters;
+
+      if (isEmpty(rest)) {
+        const p = schema.products.all();
+
+        totalCount = p.models.length;
+
+        return { products: p, pagination: { pageSize, totalCount, currentPage } };
       }
 
       const filteredProduct = schema.products.where((p) => {

@@ -44,7 +44,7 @@ const Modal = ({ children, onClose, hasCloseBtn = true, isOpen, className, title
 
   return (
     <dialog ref={modalRef} className={className} onKeyDown={handleKeyDown}>
-      <div className="flex items-center justify-between pb-6">
+      <div className="flex items-center justify-between pb-4">
         {title && <Text variant="h3">{title}</Text>}
         {hasCloseBtn && (
           <Button

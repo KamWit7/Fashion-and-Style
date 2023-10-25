@@ -72,13 +72,8 @@ const Filters = ({ className, isMobile, setIsOpen }: FiltersType & React.HTMLAtt
         </>
       ) : (
         <>
-          {filtersElements}
-          <FiltersButton
-            title="Close Modal"
-            className="flex justify-between md:hidden"
-            onClear={clearSearchParams}
-            onClose={setIsOpen.of}
-          />
+          <div className="flex flex-col gap-4">{filtersElements}</div>
+          <FiltersButton title="Close Modal" className="md:hidden" onClear={clearSearchParams} onClose={setIsOpen.of} />
         </>
       )}
     </form>

@@ -31,7 +31,7 @@ const FavoriteLabel = () => {
   };
 
   return (
-    <div onClick={toggleLiked} className="absolute right-8 top-2 cursor-pointer md:top-4">
+    <div onClick={toggleLiked} className="absolute right-4 top-4 cursor-pointer">
       {liked ? <AiFillHeart size={24} className="fill-state-error-light" /> : <AiOutlineHeart size={24} />}
     </div>
   );
