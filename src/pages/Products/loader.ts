@@ -1,11 +1,12 @@
-import { LoaderFunction } from 'react-router-dom';
+import { LoaderFunction, defer } from 'react-router-dom';
 import { API } from '@api';
 
-export default (async ({ request }) => {
+export default (({ request }) => {
   const searchParams = new URLSearchParams(new URL(request.url).search);
 
-  const data = await API.getProducts(searchParams);
-  console.log('data', data);
+  const data = API.getProducts(searchParams);
 
-  return data;
+  const loaderData = { loaderData: data };
+
+  return defer(loaderData) as unknown as typeof loaderData;
 }) satisfies LoaderFunction;

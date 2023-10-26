@@ -6,6 +6,11 @@ namespace API {
     currentPage: number;
   };
 
+  type ApiResponse<T> = {
+    models: T[];
+    modelName: string;
+  };
+
   type ProductType = {
     uid: number;
     img: string;
