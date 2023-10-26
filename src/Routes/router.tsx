@@ -47,12 +47,10 @@ const router = createBrowserRouter([
         path: 'products',
         element: <Pages.Products />,
         loader: Pages.ProductsLoader,
-        children: [
-          {
-            path: ':id',
-            element: <Pages.Product />,
-          },
-        ],
+      },
+      {
+        path: 'products/:id',
+        element: <Pages.Product />,
       },
       { ...protectedRoutes },
       { path: '*', element: <Pages.NotFound /> },
