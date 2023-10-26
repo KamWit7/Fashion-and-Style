@@ -10,22 +10,10 @@ import { Await, useLoaderData } from 'react-router-dom';
 
 import { LandingLoader } from '@pages';
 import React, { useMemo } from 'react';
+import ProductsSlider from '@components/ProductsSlider';
 
 type LandingLoaderType = LoaderData<typeof LandingLoader>;
 
-function Products(productsData: Awaited<LandingLoaderType['productsData']>) {
-  const Items = useMemo(
-    () => productsData.products.models.map((p) => <ProductCard key={p.uid} {...p} />),
-    [productsData]
-  );
-
-  return (
-    <>
-      <Slider className="hidden md:block">{Items}</Slider>
-      <Slider slidesPerView={2} className="md:hidden"></Slider>
-    </>
-  );
-}
 const sliderProps = { freeMode: true, pagination: false, modules: [FreeMode] };
 
 function Modiweeks(modiweeks: API.ModiweekType[]) {
@@ -72,7 +60,7 @@ const Landing = () => {
           </Button>
 
           <React.Suspense fallback={<div>Loadding...</div>}>
-            <Await resolve={data?.productsData}>{Products}</Await>
+            <Await resolve={data?.productsData}>{ProductsSlider}</Await>
           </React.Suspense>
         </Section>
 

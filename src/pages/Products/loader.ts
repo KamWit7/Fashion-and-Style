@@ -6,7 +6,7 @@ export default (({ request }) => {
 
   const data = API.getProducts(searchParams);
 
-  const loaderData = { loaderData: data };
+  const loaderData = { productsData: data };
 
   return defer(loaderData) as unknown as typeof loaderData;
 }) satisfies LoaderFunction;

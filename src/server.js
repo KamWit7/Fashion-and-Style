@@ -375,9 +375,11 @@ createServer({
 
       const { productsPageStart, productsPageEnd, totalCount } = getPageRange(filteredProduct);
 
+      const pageNumber = Math.ceil(totalCount / pageSize);
+
       return {
         products: filteredProduct.slice(productsPageStart, productsPageEnd),
-        pagination: { pageSize, totalCount, currentPage: 1 },
+        pagination: { pageSize, totalCount, currentPage: currentPage > pageNumber ? 1 : currentPage },
       };
     });
 
