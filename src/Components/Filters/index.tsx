@@ -1,5 +1,5 @@
 import React from 'react';
-import { AccordionItem, Text } from '@components';
+import { Accordion, Text } from '@components';
 import { useSearchParams } from 'react-router-dom';
 import { createCheckboxState, getActiveFilters, isOpenOnInit } from '@components/Filters/utils';
 import { colors, sizes, stocks } from '@components/Filters/consts';
@@ -51,9 +51,9 @@ const Filters = ({ className, isMobile, setIsOpen }: FiltersType & React.HTMLAtt
   ];
 
   const filtersElements = filters.map((f, idx) => (
-    <AccordionItem key={`${f.title}_${idx}`} title={f.title} initialState={isOpenOnInit(f.state)}>
+    <Accordion key={`${f.title}_${idx}`} title={f.title} initialState={isOpenOnInit(f.state)}>
       <CheckboxRegister filter={f.filter} initialValue={f.state} />
-    </AccordionItem>
+    </Accordion>
   ));
 
   return (

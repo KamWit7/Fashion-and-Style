@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import usePagination, { DOTS } from './usePagination';
 import { PaginationProps } from './types';
 import { useSearchParams } from 'react-router-dom';
@@ -10,8 +9,6 @@ const Pagination = (props: PaginationProps) => {
   const { paginationRange, totalPageCount } = usePagination(props);
 
   const [searchParams, setSearchParams] = useSearchParams();
-
-
 
   const nextPage = () => {
     const currentPage = searchParams.get('page');
@@ -64,7 +61,10 @@ const Pagination = (props: PaginationProps) => {
         return (
           <li
             key={page}
-            className={cn(page === DOTS ? 'cursor-default' : 'cursor-pointer')}
+            className={cn(
+              page === props.currentPage ? 'bg-slate-400' : 'bg-transparent',
+              page === DOTS ? 'cursor-default' : 'cursor-pointer'
+            )}
             onClick={() => toPage(page)}
           >
             {page}
