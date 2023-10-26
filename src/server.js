@@ -159,6 +159,115 @@ createServer({
       inStock: true,
     });
 
+    server.create('product', {
+      uid: 14,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+      colors: ['#0C0C0C'],
+      sizes: ['m', 'l'],
+    });
+    server.create('product', {
+      uid: 15,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+      colors: ['#0C0C0C'],
+      sizes: ['m', 'l'],
+    });
+    server.create('product', {
+      uid: 16,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+      colors: ['#0C0C0C'],
+      sizes: ['m', 'l'],
+    });
+    server.create('product', {
+      uid: 17,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+      colors: ['#0C0C0C'],
+      sizes: ['m', 'l'],
+    });
+    server.create('product', {
+      uid: 18,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 19,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 20,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 21,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 22,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+    });
+    server.create('product', {
+      uid: 23,
+      img: 'https://s3-alpha-sig.figma.com/img/209f/58fe/1ecd1413ad2774d90d07d469a39cf165?Expires=1698624000&Signature=TqhTuXOD04nFfSaYDwgARw7htB8x7PCKzctTAEh4VMeKhhWigX-O74jpoOtBfWYn1G0sd94GWO8G8KpS0GdfZycf0wzECVFYJAFAYoeSKHPpfGQFN8ewmcaBJXxvuS6L-B7VhzBSp2RcDHB9nMTw20~ks0K2-o0Gx-SDS4j5cSDdVG2RIHdrFjQZv58Z6i74r8wc-b6rBbZV6pAr7YR41d2h6W7Ek6I-DPkS2K4DMLZEkF-nXHNgIWhxItmKNTRHkyumng~6epu5RMtg8NZ6HQnbJm~CWn5SQCNnseGA5EMzoIUhBU4F7MYnwgQkgHKD2D8r0ndU2hY2g-1TbHwN2g__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+      collection: '',
+      title: 'Line Wide Leg',
+      subtitle: 'Turn it Up Pants',
+      price: 110,
+      bestseller: false,
+      inStock: true,
+    });
+
     server.create('modiweek', {
       uid: 1,
       img: 'https://s3-alpha-sig.figma.com/img/47db/fd79/c6b95428bbbaa4151b79b1371e32ef3c?Expires=1698019200&Signature=Um3QJ4q9k1QPygqB7F36HeLCHZPp3c4-cJz95As9H3wSWgpGrBhfypUk9xaI4BeWsJGIdiz~BebsqP7xV802Ws-saIPTgifpmHJ95cKyjAZq1I~Ex5TxF0Ys7kbx2a4L3MRziWS8bEFSR7Yt-LD36epomhzd18J16TPzvf1i0xNOgb0MMV8WAFiXxZbYFGOedpZa9PciPgKBeFzx6BRV5MxSxeAy1AJ8Dj9E5igGsK1syzNgVRHi6N~5sGibgAek9wLuJSVXD-YP1HY5QMR3BiPAAG~Ncj1L4-jCyCZiQNfEcrx8cOqIXbX9NbPgOrh6FwDTJgEUkr5~qonoo8oXCQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
@@ -212,19 +321,38 @@ createServer({
       }
 
       const pageSize = 10;
-      let totalCount = 0;
-      const { page: currentPage, ...rest } = filters;
 
-      if (isEmpty(rest)) {
-        const p = schema.products.all();
+      const { page, ...restFilters } = filters;
 
-        totalCount = p.models.length;
+      const currentPage = Array.isArray(page) && page.length > 0 ? Number(page[0]) : 1;
 
-        return { products: p, pagination: { pageSize, totalCount, currentPage } };
+      const getPageRange = (products) => {
+        const totalCount = products.models.length;
+
+        let productsPageEnd = currentPage * pageSize;
+
+        const productsPageStart = productsPageEnd - pageSize;
+
+        const hasNotFullLastPage = productsPageEnd - totalCount;
+
+        productsPageEnd = hasNotFullLastPage > 0 ? totalCount : productsPageEnd;
+
+        return { productsPageStart, productsPageEnd, totalCount };
+      };
+
+      if (isEmpty(restFilters)) {
+        const allProducts = schema.products.all();
+
+        const { productsPageStart, productsPageEnd, totalCount } = getPageRange(allProducts);
+
+        return {
+          products: allProducts.slice(productsPageStart, productsPageEnd),
+          pagination: { pageSize, totalCount, currentPage },
+        };
       }
 
       const filteredProduct = schema.products.where((p) => {
-        const f = Object.entries(filters).map(([filterName, filterValue]) => {
+        const f = Object.entries(restFilters).map(([filterName, filterValue]) => {
           const productValue = p[filterName];
 
           if (typeof productValue === 'boolean') {
@@ -242,10 +370,15 @@ createServer({
       });
 
       if (paramsKey.includes('bestseller')) {
-        return schema.products.where({ bestseller: true });
+        return { products: schema.products.where({ bestseller: true }) };
       }
 
-      return filteredProduct;
+      const { productsPageStart, productsPageEnd, totalCount } = getPageRange(filteredProduct);
+
+      return {
+        products: filteredProduct.slice(productsPageStart, productsPageEnd),
+        pagination: { pageSize, totalCount, currentPage: 1 },
+      };
     });
 
     this.get('/modiweeks', (schema) => {

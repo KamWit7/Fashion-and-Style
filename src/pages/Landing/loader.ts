@@ -6,7 +6,7 @@ export default (() => {
   const productsData = API.getProducts({ bestseller: true });
   const modiweeksData = API.getModiweek();
 
-  const loaderData = { products: productsData, modiweeks: modiweeksData };
+  const loaderData = { productsData: productsData, modiweeks: modiweeksData };
 
   return defer(loaderData) as unknown as typeof loaderData;
 }) satisfies LoaderFunction;

@@ -11,15 +11,18 @@ import { Await, useLoaderData } from 'react-router-dom';
 import { LandingLoader } from '@pages';
 import React, { useMemo } from 'react';
 
-function Products(products: API.ProductType[]) {
-  const Items = useMemo(() => products.map((p) => <ProductCard key={p.uid} {...p} />), [products]);
+type LandingLoaderType = LoaderData<typeof LandingLoader>;
+
+function Products(productsData: Awaited<LandingLoaderType['productsData']>) {
+  const Items = useMemo(
+    () => productsData.products.models.map((p) => <ProductCard key={p.uid} {...p} />),
+    [productsData]
+  );
 
   return (
     <>
       <Slider className="hidden md:block">{Items}</Slider>
-      <Slider slidesPerView={2} className="md:hidden">
-        {Items}
-      </Slider>
+      <Slider slidesPerView={2} className="md:hidden"></Slider>
     </>
   );
 }
@@ -47,7 +50,7 @@ function Modiweeks(modiweeks: API.ModiweekType[]) {
 }
 
 const Landing = () => {
-  const data = useLoaderData() as LoaderData<typeof LandingLoader>;
+  const data = useLoaderData() as LandingLoaderType;
 
   return (
     <div>
@@ -69,7 +72,7 @@ const Landing = () => {
           </Button>
 
           <React.Suspense fallback={<div>Loadding...</div>}>
-            <Await resolve={data?.products}>{Products}</Await>
+            <Await resolve={data?.productsData}>{Products}</Await>
           </React.Suspense>
         </Section>
 

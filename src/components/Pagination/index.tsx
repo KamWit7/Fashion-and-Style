@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import usePagination, { DOTS } from './usePagination';
 import { PaginationProps } from './types';
 import { useSearchParams } from 'react-router-dom';
@@ -10,6 +10,8 @@ const Pagination = (props: PaginationProps) => {
   const { paginationRange, totalPageCount } = usePagination(props);
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+
 
   const nextPage = () => {
     const currentPage = searchParams.get('page');
