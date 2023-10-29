@@ -13,7 +13,7 @@ interface AccordionProps {
 const styles = (flag?: boolean) => ({
   border: {
     solid: flag ? 'border-primary-400' : 'border-primary-600',
-    outline: 'text-black',
+    outline: 'text-black bg-primary-25',
   },
   title: {
     solid: flag ? 'bg-transparent text-primary-400' : 'bg-primary-600 text-white',

@@ -1,27 +1,14 @@
 import React, { useState } from 'react';
-import { Text } from '@components';
+import { Text, ColorsLabel } from '@components';
 import { cn } from '@utils/cn';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
+import { useNavigate } from 'react-router-dom';
 
 interface ProductCardProps extends React.PropsWithChildren, Partial<API.ProductType> {
   imgClassName?: string;
   className?: string;
   titleClassName?: string;
 }
-
-const ColorLabels = ({ colors }: { colors: string[] }) => {
-  return (
-    <div className="flex flex-nowrap items-center justify-start">
-      {colors.map((color, idx) => (
-        <div
-          key={`color_label_${color}_${idx}`}
-          className={cn('mr-2 h-4 w-4 cursor-pointer rounded-full last:mr-0 md:h-6 md:w-6')}
-          style={{ background: color }}
-        />
-      ))}
-    </div>
-  );
-};
 
 const FavoriteLabel = () => {
   const [liked, setLiked] = useState(false);
@@ -38,27 +25,36 @@ const FavoriteLabel = () => {
 };
 
 const ProductCard = ({
+  id,
   title,
   subtitle,
-  img,
+  mainImg,
   price,
   colors,
   className,
   imgClassName,
   titleClassName,
 }: ProductCardProps) => {
-  const classes = cn('relative mb-10  space-x-1 space-y-1 pr-4', className);
+  const classes = cn('relative mb-10 space-x-1 space-y-1 pr-4', className);
+  const navigate = useNavigate();
 
   return (
     <div className={classes}>
-      {/* Temp. color for bg */}
-      <div className="relative min-h-[213px] overflow-hidden bg-red-100 sm:min-h-[438px]">
-        <img src={img} className={cn('absolute -z-10 h-auto max-w-full', imgClassName)} alt="product image" />
+      {/* TODO: Temp. color for bg */}
+      <div
+        onClick={() => navigate(`./${id}`)}
+        className="relative min-h-[213px]  cursor-pointer overflow-hidden bg-red-100 sm:min-h-[438px]"
+      >
+        <img src={mainImg} className={cn('absolute -z-10 h-auto max-w-full', imgClassName)} alt="product image" />
       </div>
       <FavoriteLabel />
 
       {title && (
-        <Text variant="h6" className={titleClassName}>
+        <Text
+          onClick={() => navigate(`./${id}`)}
+          variant="h6"
+          className={cn('cursor-pointer hover:underline', titleClassName)}
+        >
           {title}
         </Text>
       )}
@@ -76,7 +72,7 @@ const ProductCard = ({
         )}
       </div>
 
-      {colors && <ColorLabels colors={colors} />}
+      {colors && <ColorsLabel colors={colors} />}
     </div>
   );
 };
