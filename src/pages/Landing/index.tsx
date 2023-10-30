@@ -20,7 +20,7 @@ function Modiweeks(modiweeks: API.ModiweekType[]) {
   const Items = useMemo(
     () =>
       modiweeks.map((m, idx) => (
-        <ProductCard key={m.uid} {...m} titleClassName="pt-4" className={cn(idx === 0 && 'pl-4 md:pl-0')} />
+        <ProductCard key={m.id} {...m} titleClassName="pt-4" className={cn(idx === 0 && 'pl-4 md:pl-0')} />
       )),
     [modiweeks]
   );

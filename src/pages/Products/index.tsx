@@ -2,6 +2,7 @@ import { Center, Filters, MobileFilters, Pagination, ProductCard, Text } from '@
 import { Await, useLoaderData, useNavigation, useSearchParams } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { ProductsSliderType } from '@components/ProductsSlider/types';
+import Search from '@components/Search';
 
 type ProductsLoaderResponseType = Awaited<ProductsSliderType['productsData']>;
 
@@ -49,6 +50,7 @@ const Products = () => {
 
   return (
     <Center>
+      <Search />
       <Text variant="b1" className="m-auto hidden w-full py-8 text-center md:inline-block">
         <React.Suspense fallback={<>Countingg.....</>}>
           <Await resolve={data.productsData}>

@@ -8,6 +8,20 @@ const stringifyParamsValue = (params: Record<string, unknown>) => {
 };
 
 export const API = {
+  getProductById: async (id: string) => {
+    const res = await fetch(`/api/products/${id}`);
+
+    if (!res.ok) {
+      throw {
+        message: 'Failed to fetch product',
+        statusText: res.statusText,
+        status: res.status,
+      };
+    }
+    const data = await res.json();
+
+    return data as { product: API.ProductType };
+  },
   getProducts: async (params?: { bestseller: true } | URLSearchParams) => {
     let url = '/api/products';
 
@@ -31,7 +45,7 @@ export const API = {
 
     const data = await res.json();
 
-    return data as { products: API.ApiResponse<API.ProductType>; pagination: API.PaginationType };
+    return data as { products: API.ApiResponse<API.ProductType[]>; pagination: API.PaginationType };
   },
 
   getModiweek: async () => {

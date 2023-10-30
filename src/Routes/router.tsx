@@ -40,8 +40,14 @@ const router = createBrowserRouter([
         element: <Pages.Landing />,
         loader: Pages.LandingLoader,
       },
-      { path: 'login', element: <Pages.Login /> },
-      { path: 'register', element: <>a</> },
+
+      {
+        element: <Layouts.SignIn />,
+        children: [
+          { index: true, path: 'login', element: <Pages.Login /> },
+          { path: 'register', element: <>a</> },
+        ],
+      },
       { path: 'basket', element: <Pages.Basket /> },
       {
         path: 'products',
@@ -51,6 +57,7 @@ const router = createBrowserRouter([
       {
         path: 'products/:id',
         element: <Pages.Product />,
+        loader: Pages.ProductLoader,
       },
       { ...protectedRoutes },
       { path: '*', element: <Pages.NotFound /> },

@@ -7,13 +7,22 @@ namespace API {
   };
 
   type ApiResponse<T> = {
-    models: T[];
+    models: T;
     modelName: string;
   };
 
+  type PropertyType = { title: string; about: string };
+  type DescriptionType = { title: string; property: PropertyType[] }[];
+  type MainMaterialType = {
+    type: string;
+    description: string;
+    properties: string[];
+  };
+
   type ProductType = {
-    uid: number;
-    img: string;
+    id: number;
+    mainImg: string;
+    imgs: string[];
     collection: string;
     title: string;
     subtitle: string;
@@ -22,7 +31,9 @@ namespace API {
     bestseller: boolean;
     sizes: string[];
     inStock: boolean;
+    description: DescriptionType;
+    material: MainMaterialType;
   };
 
-  type ModiweekType = Pick<ProductType, 'uid' | 'img' | 'title'>;
+  type ModiweekType = Pick<ProductType, 'id' | 'mainImg' | 'title'>;
 }

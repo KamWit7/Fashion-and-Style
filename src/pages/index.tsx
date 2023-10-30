@@ -7,7 +7,8 @@ export { default as LandingLoader } from '@src/pages/Landing/loader';
 
 export { default as NotFound } from '@pages/NotFound';
 
-export { default as Product } from '@pages/Product';
+export { default as Product } from '@pages/Product/Product';
+export { default as ProductLoader } from '@pages/Product/loader';
 
 export { default as Products } from '@pages/Products';
 export { default as ProductsLoader } from '@src/pages/Products/loader';

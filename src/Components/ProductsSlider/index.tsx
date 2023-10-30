@@ -4,7 +4,7 @@ import { ProductsSliderType } from '@components/ProductsSlider/types';
 
 function ProductsSlider(productsData: Awaited<ProductsSliderType['productsData']>) {
   const Items = useMemo(
-    () => productsData.products.models.map((p) => <ProductCard key={p.uid} {...p} />),
+    () => productsData.products.models.map((p) => <ProductCard key={p.id} {...p} />),
     [productsData]
   );
 
