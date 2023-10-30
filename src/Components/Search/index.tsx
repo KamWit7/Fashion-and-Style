@@ -8,38 +8,29 @@ const Search = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState(searchParams.get('query') ?? '');
 
-  const handleChangeQuery = (search: string) => {
-    searchParams.set('query', search);
-
-    setSearchParams(searchParams);
-  };
-
-  const handleClear = () => {
-    if (!searchParams.has('query') && !search) {
-      console.log('here');
-
+  const handelClear = (clearState?: (search: string) => void) => {
+    if (!searchParams.has('query')) {
       return;
     }
 
-    setSearch('');
     searchParams.delete('query');
     setSearchParams(searchParams);
+
+    if (typeof clearState === 'function') clearState('');
   };
 
-  const validate = (fn: (search: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     const search = e.target.value;
 
     setSearch(search);
 
-    if (!search) {
-      return handleClear();
-    }
-
     if (search.length < 3) {
-      return;
+      return handelClear();
     }
 
-    return fn(search);
+    searchParams.set('query', search);
+
+    setSearchParams(searchParams);
   };
 
   const register = (name: string) => {
@@ -54,11 +45,10 @@ const Search = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
         placeholder="Search"
         minLength={3}
         required
-        onChange={validate(handleChangeQuery)}
+        onChange={handleChangeQuery}
         {...register('query')}
         {...props}
       />
-      {JSON.stringify(search)}
       <BsSearch
         size={24}
         className="absolute left-0 top-1/2 -translate-y-1/2 text-gray transition-colors peer-valid:text-black"
@@ -66,7 +56,7 @@ const Search = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
       <AiOutlinePlus
         size={24}
         name="delete"
-        onClick={handleClear}
+        onClick={() => handelClear(setSearch)}
         className={cn(
           'absolute right-0 top-1/2 -translate-y-1/2  transition-colors peer-valid:text-black',
           'rotate-45'
