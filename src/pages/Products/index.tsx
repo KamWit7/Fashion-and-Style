@@ -1,6 +1,6 @@
 import { Center, Filters, MobileFilters, Pagination, ProductCard, Text } from '@components';
 import { Await, useLoaderData, useNavigation, useSearchParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ProductsSliderType } from '@components/ProductsSlider/types';
 import Search from '@components/Search';
 
@@ -47,29 +47,10 @@ function DisplayPagination(productsData: ProductsLoaderResponseType) {
 
 const Products = () => {
   const data = useLoaderData() as ProductsSliderType;
-  const { state } = useNavigation();
-
-  const [search, setSearch] = useState<string>();
-
-  useEffect(() => {
-    if (state !== 'idle') {
-      return;
-    }
-    // use Action to change data from loader
-  }, []);
 
   return (
     <Center>
-      <Search
-        handleClear={() => {
-          setSearch(undefined);
-        }}
-        value={search}
-        onChange={(e) => {
-          setSearch(e.target.value);
-        }}
-      />
-      {JSON.stringify(search)}
+      <Search />
       <Text variant="b1" className="m-auto hidden w-full py-8 text-center md:inline-block">
         <React.Suspense fallback={<>Countingg.....</>}>
           <Await resolve={data.productsData}>

@@ -1334,7 +1334,7 @@ createServer({
 
       const pageSize = 10;
 
-      const { page, ...restFilters } = filters;
+      const { page, query, ...restFilters } = filters;
 
       const currentPage = Array.isArray(page) && page.length > 0 ? Number(page[0]) : 1;
 
@@ -1352,45 +1352,45 @@ createServer({
         return { productsPageStart, productsPageEnd, totalCount };
       };
 
-      if (isEmpty(restFilters)) {
-        const allProducts = schema.products.all();
+      let products = isEmpty(restFilters)
+        ? schema.products.all()
+        : schema.products.where((p) => {
+            const f = Object.entries(restFilters).map(([filterName, filterValue]) => {
+              const productValue = p?.[filterName];
 
-        const { productsPageStart, productsPageEnd, totalCount } = getPageRange(allProducts);
+              if (typeof productValue === 'boolean') {
+                return filterValue.find((v) => productValue === JSON.parse(v)) !== undefined;
+              }
 
-        return {
-          products: allProducts.slice(productsPageStart, productsPageEnd),
-          pagination: { pageSize, totalCount, currentPage },
-        };
-      }
+              if (Array.isArray(productValue)) {
+                return typeof filterValue.find((v) => productValue?.includes(v)) === 'string';
+              }
 
-      const filteredProduct = schema.products.where((p) => {
-        const f = Object.entries(restFilters).map(([filterName, filterValue]) => {
-          const productValue = p[filterName];
+              return false;
+            });
 
-          if (typeof productValue === 'boolean') {
-            return filterValue.find((v) => productValue === JSON.parse(v)) !== undefined;
-          }
+            return !f.includes(false);
+          });
 
-          if (Array.isArray(productValue)) {
-            return typeof filterValue.find((v) => productValue?.includes(v)) === 'string';
-          }
+      products = query
+        ? products.filter((p) => {
+            const { title, subtitle } = p.attrs;
+            console.log();
 
-          return false;
-        });
-
-        return !f.includes(false);
-      });
+            return [title, subtitle].find((s) => s.toLowerCase().includes(query?.[0]?.toLowerCase()));
+          })
+        : products;
 
       if (paramsKey.includes('bestseller')) {
         return { products: schema.products.where({ bestseller: true }) };
       }
 
-      const { productsPageStart, productsPageEnd, totalCount } = getPageRange(filteredProduct);
+      const { productsPageStart, productsPageEnd, totalCount } = getPageRange(products);
 
       const pageNumber = Math.ceil(totalCount / pageSize);
 
       return {
-        products: filteredProduct.slice(productsPageStart, productsPageEnd),
+        products: products.slice(productsPageStart, productsPageEnd),
         pagination: { pageSize, totalCount, currentPage: currentPage > pageNumber ? 1 : currentPage },
       };
     });
