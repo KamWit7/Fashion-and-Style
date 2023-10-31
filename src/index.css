@@ -5,11 +5,19 @@
 @tailwind utilities;
 
 :root {
-  
+}
+
+body {
+  @apply bg-[#fff];
 }
 
 @layer utilities {
   .flex-center {
     @apply flex flex-row flex-nowrap items-center justify-center;
+  }
+
+  .text-label {
+    font-size: 14px;
+    line-height: 14px;
   }
 }
