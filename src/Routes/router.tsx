@@ -45,7 +45,7 @@ const router = createBrowserRouter([
         element: <Layouts.SignIn />,
         children: [
           { index: true, path: 'login', element: <Pages.Login /> },
-          { path: 'register', element: <>a</> },
+          { path: 'register', element: <Pages.Register /> },
         ],
       },
       { path: 'basket', element: <Pages.Basket /> },

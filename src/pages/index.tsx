@@ -1,5 +1,8 @@
 export { default as Basket } from '@pages/Basket';
+
 export { default as Login } from '@pages/Login';
+export { default as Register } from '@pages/Register';
+
 export { default as Favorite } from '@pages/Favorite';
 
 export { default as Landing } from '@src/pages/Landing';

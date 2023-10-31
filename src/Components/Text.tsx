@@ -72,7 +72,7 @@ const getVariantClasses = (variant: Variants): TagProps => {
       return { classes: 'text-20 md:text-24 font-sans', tag: 'p' };
     case 'b1':
       return {
-        classes: 'text-16 md:text-18 font-monsarrat ',
+        classes: 'text-16 md:text-18 font-montserrat',
         tag: 'p',
       }; // +
     case 'b2':

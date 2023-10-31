@@ -63,7 +63,7 @@ const Footer = () => {
             <div>
               <Text variant="h5">Join Our Club, Get 15% Off For Your Birthday</Text>
 
-              <form>
+              <form className="bg-gray-700">
                 <Input
                   label="Enter Your Email Address"
                   icon={(styleProps) => <AiOutlineArrowRight size={styleProps.size} className={styleProps.className} />}

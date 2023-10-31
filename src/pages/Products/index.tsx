@@ -10,13 +10,13 @@ function DisplayProductsCards(productsData: ProductsLoaderResponseType) {
   const { state } = useNavigation();
 
   if (state === 'loading') {
-    return <div>loading...</div>;
+    return <div>loading...!</div>;
   }
 
   return productsData.products.models.map((p, idx) => (
     <ProductCard
       key={`product_card_${idx}_${p.title}`}
-      className="max-w-[calc(50%-12px)] flex-grow basis-2/6 p-0"
+      className="md:min-w-[210px] flex-shrink flex-grow basis-[40%] p-0"
       {...p}
     />
   ));
