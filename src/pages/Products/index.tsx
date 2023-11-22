@@ -13,10 +13,10 @@ function DisplayProductsCards(productsData: ProductsLoaderResponseType) {
     return <div>loading...!</div>;
   }
 
-  return productsData.products.models.map((p, idx) => (
+  return productsData.products.map((p, idx) => (
     <ProductCard
       key={`product_card_${idx}_${p.title}`}
-      className="md:min-w-[210px] flex-shrink flex-grow basis-[40%] p-0"
+      className="flex-shrink flex-grow basis-[40%] p-0 md:min-w-[210px]"
       {...p}
     />
   ));

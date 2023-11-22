@@ -7,6 +7,7 @@ export default (() => {
   const modiweeksData = API.getModiweek();
 
   const loaderData = { productsData: productsData, modiweeks: modiweeksData };
+  console.log(loaderData);
 
   return defer(loaderData) as unknown as typeof loaderData;
 }) satisfies LoaderFunction;

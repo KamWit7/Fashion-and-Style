@@ -3,10 +3,8 @@ import { ProductCard, Slider } from '@components';
 import { ProductsSliderType } from '@components/ProductsSlider/types';
 
 function ProductsSlider(productsData: Awaited<ProductsSliderType['productsData']>) {
-  const Items = useMemo(
-    () => productsData.products.models.map((p) => <ProductCard key={p.id} {...p} />),
-    [productsData]
-  );
+  console.log('pd', productsData);
+  const Items = useMemo(() => productsData.products.map((p) => <ProductCard key={p._id} {...p} />), [productsData]);
 
   return (
     <>

@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom';
-import * as Layouts from '@layouts';
+import * as Layouts from '@layouts/index';
 import * as Pages from '@pages';
 
-import './../server';
+// import './../server';
 
 const protectedRoutes = {
   element: <Layouts.Auth />,

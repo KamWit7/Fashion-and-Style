@@ -23,7 +23,7 @@ export const API = {
     return data as { product: API.ProductType };
   },
   getProducts: async (params?: { bestseller: true } | URLSearchParams) => {
-    let url = '/api/products';
+    let url = 'http://localhost:8080/products';
 
     if (params !== undefined && 'bestseller' in params) {
       url = url + '?' + new URLSearchParams(stringifyParamsValue(params));
@@ -45,11 +45,11 @@ export const API = {
 
     const data = await res.json();
 
-    return data as { products: API.ApiResponse<API.ProductType[]>; pagination: API.PaginationType };
+    return data as { products: API.ProductType[]; pagination: API.PaginationType };
   },
 
   getModiweek: async () => {
-    const res = await fetch('/api/modiweeks');
+    const res = await fetch('http://localhost:8080/modiweek');
 
     if (!res.ok) {
       throw {
@@ -60,6 +60,6 @@ export const API = {
     }
     const data = await res.json();
 
-    return data.modiweeks as API.ModiweekType[];
+    return data.modiweek as API.ModiweekType[];
   },
 };

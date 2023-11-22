@@ -6,11 +6,6 @@ namespace API {
     currentPage: number;
   };
 
-  type ApiResponse<T> = {
-    models: T;
-    modelName: string;
-  };
-
   type PropertyType = { title: string; about: string };
   type DescriptionType = { title: string; property: PropertyType[] }[];
   type MainMaterialType = {
@@ -20,7 +15,7 @@ namespace API {
   };
 
   type ProductType = {
-    id: number;
+    _id: string;
     mainImg: string;
     imgs: string[];
     collection: string;
@@ -35,5 +30,5 @@ namespace API {
     material: MainMaterialType;
   };
 
-  type ModiweekType = Pick<ProductType, 'id' | 'mainImg' | 'title'>;
+  type ModiweekType = Pick<ProductType, '_id' | 'mainImg' | 'title'>;
 }
