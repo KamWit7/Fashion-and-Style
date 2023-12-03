@@ -18,3 +18,4 @@ export { default as Drawer } from '@components/Drawer';
 export { default as Pagination } from '@components/Pagination';
 export { default as ProductsSlider } from '@components/ProductsSlider';
 export { default as ColorsLabel } from '@components/ColorsLabel';
+export { default as Search } from '@components/Search';

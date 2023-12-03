@@ -11,28 +11,28 @@ const Pagination = (props: PaginationProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const nextPage = () => {
-    const currentPage = searchParams.get('page');
+    const currentPage = searchParams.get('currentPage');
 
     const outOfRightRange = !currentPage || JSON.parse(currentPage) > totalPageCount;
 
     if (outOfRightRange) {
-      searchParams.set('page', JSON.stringify(totalPageCount));
+      searchParams.set('currentPage', JSON.stringify(totalPageCount));
     } else {
-      searchParams.set('page', JSON.stringify(Number(currentPage) + 1));
+      searchParams.set('currentPage', JSON.stringify(Number(currentPage) + 1));
     }
 
     setSearchParams(searchParams);
   };
 
   const previousPage = () => {
-    const currentPage = searchParams.get('page');
+    const currentPage = searchParams.get('currentPage');
 
     const outOfLeftRange = !currentPage || JSON.parse(currentPage) - 1 < 1;
 
     if (outOfLeftRange) {
-      searchParams.set('page', JSON.stringify(1));
+      searchParams.set('currentPage', JSON.stringify(1));
     } else {
-      searchParams.set('page', JSON.stringify(Number(currentPage) - 1));
+      searchParams.set('currentPage', JSON.stringify(Number(currentPage) - 1));
     }
 
     setSearchParams(searchParams);
@@ -43,7 +43,7 @@ const Pagination = (props: PaginationProps) => {
       return;
     }
 
-    searchParams.set('page', JSON.stringify(page));
+    searchParams.set('currentPage', JSON.stringify(page));
     setSearchParams(searchParams);
   };
 

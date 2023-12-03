@@ -2,7 +2,7 @@ import { Center, Filters, MobileFilters, Pagination, ProductCard, Text } from '@
 import { Await, useLoaderData, useNavigation, useSearchParams } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import { ProductsSliderType } from '@components/ProductsSlider/types';
-import Search from '@components/Search';
+import { Search } from '@components';
 
 type ProductsLoaderResponseType = Awaited<ProductsSliderType['productsData']>;
 
@@ -28,10 +28,10 @@ function DisplayPagination(productsData: ProductsLoaderResponseType) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    const page = searchParams.get('page');
+    const page = searchParams.get('currentPage');
 
     if (page && Number(page) !== currentPage && Number(page) > 1) {
-      searchParams.set('page', JSON.stringify(Number(currentPage)));
+      searchParams.set('currentPage', JSON.stringify(Number(currentPage)));
       setSearchParams(searchParams);
     }
 

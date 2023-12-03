@@ -1,7 +1,10 @@
 export { default as Basket } from '@pages/Basket';
 
 export { default as Login } from '@pages/Login';
+export { default as LoginAction } from '@pages/Login/action';
+
 export { default as Register } from '@pages/Register';
+export { default as RegisterAction } from '@pages/Register/action';
 
 export { default as Favorite } from '@pages/Favorite';
 
