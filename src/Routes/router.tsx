@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import * as Layouts from '@layouts/index';
 import * as Pages from '@pages';
+import { AuthProvider } from '@src/context/AuthContext';
 
 // import './../server';
 
@@ -33,7 +34,11 @@ const protectedRoutes = {
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Layouts.Main />,
+    element: (
+      <AuthProvider>
+        <Layouts.Main />
+      </AuthProvider>
+    ),
     children: [
       {
         index: true,
@@ -41,13 +46,6 @@ const router = createBrowserRouter([
         loader: Pages.LandingLoader,
       },
 
-      {
-        element: <Layouts.SignIn />,
-        children: [
-          { index: true, path: 'login', element: <Pages.Login />, action: Pages.LoginAction },
-          { path: 'register', element: <Pages.Register />, action: Pages.RegisterAction },
-        ],
-      },
       { path: 'basket', element: <Pages.Basket /> },
       {
         path: 'products',
@@ -59,7 +57,16 @@ const router = createBrowserRouter([
         element: <Pages.Product />,
         loader: Pages.ProductLoader,
       },
-      { ...protectedRoutes },
+
+      {
+        //ten
+        element: <Layouts.SignIn />,
+        children: [
+          { index: true, path: 'login', element: <Pages.Login />, action: Pages.LoginAction },
+          { path: 'register', element: <Pages.Register />, action: Pages.RegisterAction },
+        ],
+      },
+      { ...protectedRoutes }, // i ten powinny działać przeciwstawinie 
       { path: '*', element: <Pages.NotFound /> },
     ],
   },

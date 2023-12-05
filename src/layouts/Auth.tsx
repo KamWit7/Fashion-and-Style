@@ -1,9 +1,10 @@
+import { useAuth } from '@src/context/AuthContext/useAuth';
 import { Outlet, Navigate } from 'react-router-dom';
 
 const Auth = () => {
-  const isLoggedIn = false;
+  const { token } = useAuth();
 
-  if (!isLoggedIn) {
+  if (!token) {
     return <Navigate to="/login?message=You must be logged in" />;
   }
 
