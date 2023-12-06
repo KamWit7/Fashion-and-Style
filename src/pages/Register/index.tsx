@@ -1,10 +1,27 @@
 import { Text, Input, Button } from '@components';
-import { Form, Link, useOutletContext } from 'react-router-dom';
+import { Form, Link, useActionData, useOutletContext } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import { RegisterAction } from '..';
+import { useAuth } from '@src/context/AuthContext/useAuth';
+import { ActionData } from '@src/types/loader';
+import { useEffect } from 'react';
+
+type RegisterActionType = ActionData<typeof RegisterAction>;
 
 const Register = () => {
   {
     const { className } = useOutletContext() as { className?: string };
+
+    const user = useActionData() as RegisterActionType;
+    const { login } = useAuth();
+
+    useEffect(() => {
+      if (!user?.token) {
+        return;
+      }
+
+      login(user.token);
+    }, [login, user?.token]);
 
     return (
       <div className={className}>

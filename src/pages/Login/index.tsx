@@ -1,9 +1,26 @@
 import { Text, Input, Button } from '@components';
-import { Form, Link, useOutletContext } from 'react-router-dom';
+import { Form, Link, useActionData, useOutletContext } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import { useEffect } from 'react';
+import { useAuth } from '@src/context/AuthContext/useAuth';
+import { LoginAction } from '..';
+import { ActionData } from '@src/types/loader';
+
+type LoaderActionType = ActionData<typeof LoginAction>;
 
 const Login = () => {
   const { className } = useOutletContext() as { className?: string };
+
+  const user = useActionData() as LoaderActionType;
+  const { login } = useAuth();
+
+  useEffect(() => {
+    if (!user?.token) {
+      return;
+    }
+
+    login(user.token);
+  }, [login, user?.token]);
 
   return (
     <div className={className}>

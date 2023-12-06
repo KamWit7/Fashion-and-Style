@@ -84,7 +84,7 @@ export const API = {
 
     const data = await res.json();
 
-    return data;
+    return data as { token?: string; email?: string };
   },
   login: async <T>(body: T) => {
     const res = await fsAPI.fetchURL(routes.auth.login, {
@@ -102,6 +102,6 @@ export const API = {
 
     const data = await res.json();
 
-    return data;
+    return data as { token?: string; email?: string };
   },
 };

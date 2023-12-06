@@ -57,16 +57,14 @@ const router = createBrowserRouter([
         element: <Pages.Product />,
         loader: Pages.ProductLoader,
       },
-
+      { ...protectedRoutes },
       {
-        //ten
         element: <Layouts.SignIn />,
         children: [
-          { index: true, path: 'login', element: <Pages.Login />, action: Pages.LoginAction },
+          { path: 'login', element: <Pages.Login />, action: Pages.LoginAction },
           { path: 'register', element: <Pages.Register />, action: Pages.RegisterAction },
         ],
       },
-      { ...protectedRoutes }, // i ten powinny działać przeciwstawinie 
       { path: '*', element: <Pages.NotFound /> },
     ],
   },
