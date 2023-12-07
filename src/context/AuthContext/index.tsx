@@ -1,3 +1,4 @@
+import APIRoutsManager from '@api/APIRoutesManager';
 import React, { createContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,6 +11,8 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 const AuthProvider = ({ children }: React.PropsWithChildren) => {
+  const { setHeaders } = APIRoutsManager.getInstance();
+
   const [token, setToken] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -18,15 +21,20 @@ const AuthProvider = ({ children }: React.PropsWithChildren) => {
 
     if (storedToken) {
       setToken(storedToken);
+      setHeaders({
+        Authorization: `Barer ${storedToken}`,
+      });
     }
-  }, []);
-  console.log('bareToken');
+  }, [setHeaders]);
+
+  console.log('header',APIRoutsManager.getInstance().headers);
 
   const login = (newToken: string) => {
-    console.log('login!');
-
     localStorage.setItem('bearerToken', newToken);
     setToken(newToken);
+    setHeaders({
+      Authorization: `Barer ${newToken}`,
+    });
     navigate('/');
   };
 

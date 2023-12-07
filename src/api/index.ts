@@ -1,4 +1,4 @@
-import Routes from './routes';
+import APIRoutsManager from './APIRoutesManager';
 
 const stringifyParamsValue = (params: Record<string, unknown>) => {
   return Object.entries(params).reduce(
@@ -9,12 +9,12 @@ const stringifyParamsValue = (params: Record<string, unknown>) => {
   );
 };
 
-const fsAPI = new Routes('http://localhost:8080');
-const routes = fsAPI.getRoutes();
+const { fetchURL, getRoutes } = APIRoutsManager.getInstance('http://localhost:8080');
+const routes = getRoutes();
 
-export const API = {
+const productsApi = {
   getProductById: async (id: string) => {
-    const res = await fsAPI.fetchURL(routes.products.productId(id));
+    const res = await fetchURL(routes.products.productId(id));
 
     if (!res.ok) {
       throw {
@@ -38,7 +38,7 @@ export const API = {
       url = url + '?' + params.toString();
     }
 
-    const res = await fsAPI.fetchURL(url);
+    const res = await fetchURL(url);
 
     if (!res.ok) {
       throw {
@@ -52,9 +52,11 @@ export const API = {
 
     return data as { products: API.ProductType[]; pagination: API.PaginationType };
   },
+};
 
+const modiweekApi = {
   getModiweek: async () => {
-    const res = await fsAPI.fetchURL(routes.modiweek.default);
+    const res = await fetchURL(routes.modiweek.default);
 
     if (!res.ok) {
       throw {
@@ -67,9 +69,11 @@ export const API = {
 
     return data.modiweek as API.ModiweekType[];
   },
+};
 
+const authApi = {
   signup: async <T>(body: T) => {
-    const res = await fsAPI.fetchURL(routes.auth.signup, {
+    const res = await fetchURL(routes.auth.signup, {
       method: 'POST',
       body: JSON.stringify(body),
     });
@@ -87,7 +91,7 @@ export const API = {
     return data as { token?: string; email?: string };
   },
   login: async <T>(body: T) => {
-    const res = await fsAPI.fetchURL(routes.auth.login, {
+    const res = await fetchURL(routes.auth.login, {
       method: 'POST',
       body: JSON.stringify(body),
     });
@@ -104,4 +108,65 @@ export const API = {
 
     return data as { token?: string; email?: string };
   },
+};
+
+const cartApi = {
+  getCard: async () => {
+    const res = await fetchURL(routes.cart.default);
+
+    if (!res.ok) {
+      throw {
+        message: 'Failed to get cart items',
+        statusText: res.statusText,
+        status: res.status,
+      };
+    }
+
+    const data = await res.json();
+
+    return data;
+  },
+  postItem: async <T>(body: T) => {
+    const res = await fetchURL(routes.cart.add, {
+      method: 'POST',
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) {
+      throw {
+        message: 'Failed to post item',
+        statusText: res.statusText,
+        status: res.status,
+      };
+    }
+
+    const data = await res.json();
+
+    return data;
+  },
+  removeItem: async <T>(body: T) => {
+    const res = await fetchURL(routes.cart.removeItem, {
+      method: 'DELETE',
+      body: JSON.stringify(body),
+    });
+
+    if (!res.ok) {
+      throw {
+        message: 'Failed to remove item',
+        statusText: res.statusText,
+        status: res.status,
+      };
+    }
+
+    const data = await res.json();
+
+    return data;
+  },
+};
+
+export const API = {
+  ...productsApi,
+  ...modiweekApi,
+  ...authApi,
+  ...cartApi,
 };
