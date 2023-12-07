@@ -11,23 +11,17 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 const AuthProvider = ({ children }: React.PropsWithChildren) => {
-  const { setHeaders } = APIRoutsManager.getInstance();
-
   const [token, setToken] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { setHeaders } = APIRoutsManager.getInstance();
 
   useEffect(() => {
     const storedToken = localStorage.getItem('bearerToken');
 
     if (storedToken) {
       setToken(storedToken);
-      setHeaders({
-        Authorization: `Barer ${storedToken}`,
-      });
     }
   }, [setHeaders]);
-
-  console.log('header',APIRoutsManager.getInstance().headers);
 
   const login = (newToken: string) => {
     localStorage.setItem('bearerToken', newToken);

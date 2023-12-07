@@ -20,7 +20,7 @@ class APIRoutsManager {
 
   private static instance: APIRoutsManager;
   URL: string;
-  headers?: Record<string, string>;
+  headers?: Record<string, string> = {};
 
   private constructor(URL: string) {
     this.URL = URL;
@@ -31,7 +31,7 @@ class APIRoutsManager {
       throw Error('You must initialize Route Instance!');
     }
 
-    APIRoutsManager.instance.headers = headers;
+    APIRoutsManager.getInstance().headers = headers;
   }
 
   getRoutes() {

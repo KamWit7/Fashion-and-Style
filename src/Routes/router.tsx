@@ -46,7 +46,7 @@ const router = createBrowserRouter([
         loader: Pages.LandingLoader,
       },
 
-      { path: 'basket', element: <Pages.Basket /> },
+      { path: 'basket', element: <Pages.Basket />, loader: Pages.BasketLoader },
       {
         path: 'products',
         element: <Pages.Products />,

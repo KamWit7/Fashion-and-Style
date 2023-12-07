@@ -1,4 +1,5 @@
 export { default as Basket } from '@pages/Basket';
+export { default as BasketLoader } from '@pages/Basket/loader';
 
 export { default as Login } from '@pages/Login';
 export { default as LoginAction } from '@pages/Login/action';

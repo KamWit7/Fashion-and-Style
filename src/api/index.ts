@@ -9,8 +9,16 @@ const stringifyParamsValue = (params: Record<string, unknown>) => {
   );
 };
 
-const { fetchURL, getRoutes } = APIRoutsManager.getInstance('http://localhost:8080');
+const { fetchURL, getRoutes, setHeaders } = APIRoutsManager.getInstance('http://localhost:8080');
 const routes = getRoutes();
+
+const token = localStorage.getItem('bearerToken');
+
+if (token) {
+  setHeaders({
+    Authorization: `Barer ${token}`,
+  });
+}
 
 const productsApi = {
   getProductById: async (id: string) => {
@@ -110,8 +118,8 @@ const authApi = {
   },
 };
 
-const cartApi = {
-  getCard: async () => {
+const cart = {
+  get: async () => {
     const res = await fetchURL(routes.cart.default);
 
     if (!res.ok) {
@@ -124,9 +132,9 @@ const cartApi = {
 
     const data = await res.json();
 
-    return data;
+    return data as API.CardType;
   },
-  postItem: async <T>(body: T) => {
+  post: async <T>(body: T) => {
     const res = await fetchURL(routes.cart.add, {
       method: 'POST',
       body: JSON.stringify(body),
@@ -142,9 +150,9 @@ const cartApi = {
 
     const data = await res.json();
 
-    return data;
+    return data as API.CardType;
   },
-  removeItem: async <T>(body: T) => {
+  delete: async <T>(body: T) => {
     const res = await fetchURL(routes.cart.removeItem, {
       method: 'DELETE',
       body: JSON.stringify(body),
@@ -160,7 +168,7 @@ const cartApi = {
 
     const data = await res.json();
 
-    return data;
+    return data as API.CardType;
   },
 };
 
@@ -168,5 +176,5 @@ export const API = {
   ...productsApi,
   ...modiweekApi,
   ...authApi,
-  ...cartApi,
+  cart,
 };
