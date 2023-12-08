@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import * as Layouts from '@layouts/index';
 import * as Pages from '@pages';
 import { AuthProvider } from '@src/context/AuthContext';
+import { CartProvider } from '@src/context/CardContext';
 
 // import './../server';
 
@@ -36,7 +37,9 @@ const router = createBrowserRouter([
     path: '/',
     element: (
       <AuthProvider>
-        <Layouts.Main />
+        <CartProvider>
+          <Layouts.Main />
+        </CartProvider>
       </AuthProvider>
     ),
     children: [

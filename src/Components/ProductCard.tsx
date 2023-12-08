@@ -25,7 +25,7 @@ const FavoriteLabel = () => {
 };
 
 const ProductCard = ({
-  id,
+  _id,
   title,
   subtitle,
   mainImg,
@@ -42,7 +42,7 @@ const ProductCard = ({
     <div className={classes}>
       {/* TODO: Temp. color for bg */}
       <div
-        onClick={() => navigate(`./${id}`)}
+        onClick={() => navigate(`./${_id}`)}
         className="relative min-h-[213px]  cursor-pointer overflow-hidden bg-red-100 sm:min-h-[438px]"
       >
         <img src={mainImg} className={cn('absolute -z-10 h-auto max-w-full', imgClassName)} alt="product image" />
@@ -51,7 +51,7 @@ const ProductCard = ({
 
       {title && (
         <Text
-          onClick={() => navigate(`./${id}`)}
+          onClick={() => navigate(`./${_id}`)}
           variant="h6"
           className={cn('cursor-pointer hover:underline', titleClassName)}
         >

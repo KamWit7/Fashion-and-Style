@@ -3,9 +3,11 @@ import { BasketLoader } from '..';
 import { LoaderData } from '@src/types/loader';
 import ProductDetails from './components/ProductDetlails';
 import { Suspense } from 'react';
+import { useCart } from '@src/context/CardContext/useCart';
 
 const Basket = () => {
-  const cart = useLoaderData() as LoaderData<typeof BasketLoader>;
+  const loaderCart = useLoaderData() as LoaderData<typeof BasketLoader>;
+  const { cart } = useCart();
 
   return (
     <div className="container mx-auto">
@@ -20,9 +22,11 @@ const Basket = () => {
         </thead>
         <tbody>
           <Suspense fallback={<tr>Products...</tr>}>
-            <Await resolve={cart.cart}>
-              {(cart: API.CardType) =>
-                cart.items.map((item, idx) => (
+            <Await resolve={loaderCart.cart}>
+              {(loaderCart: API.CardType | null) => {
+                const c = loaderCart ? loaderCart.items : cart;
+
+                return c.map((item, idx) => (
                   <tr className="border-b bg-gray-100 text-center" key={idx}>
                     <ProductDetails
                       imageSrcSet={item.productId.mainImg}
@@ -33,8 +37,8 @@ const Basket = () => {
                       total={item.quantity * item.productId.price}
                     />
                   </tr>
-                ))
-              }
+                ));
+              }}
             </Await>
           </Suspense>
         </tbody>

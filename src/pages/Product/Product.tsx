@@ -7,6 +7,7 @@ import { Await, useLoaderData } from 'react-router-dom';
 
 import { LoaderData } from '@src/types/loader';
 import React from 'react';
+import { useCart } from '@src/context/CardContext/useCart';
 
 type ProductType = LoaderData<typeof ProductLoader>;
 type AwaitedProductType = Awaited<ProductType['productData']>;
@@ -14,6 +15,7 @@ type AwaitedProductType = Awaited<ProductType['productData']>;
 export const Product = () => {
   const data = useLoaderData() as LoaderData<typeof ProductLoader>;
   const [activeImg, setActiveImg] = useState(0);
+  const { addToCart } = useCart();
 
   return (
     <Center>
@@ -95,9 +97,17 @@ export const Product = () => {
               </Await>
             </React.Suspense>
           </div>
-          <Button type="button" className="mt-6 w-full">
-            Add To Cart
-          </Button>
+
+          <React.Suspense fallback={<div>Loading...</div>}>
+            <Await resolve={data?.productData}>
+              {(productData: AwaitedProductType) => (
+                <Button onClick={() => addToCart(productData.product._id)} type="button" className="mt-6 w-full">
+                  Add To Cart
+                </Button>
+              )}
+            </Await>
+          </React.Suspense>
+
           <div className="mt-8 flex justify-between px-4 text-gray-500">
             <div className="flex cursor-pointer items-center justify-center gap-2">
               <BsTruck size={20} />
@@ -149,15 +159,12 @@ export const Product = () => {
       </div>
       <Section title="You May Also Like">
         <ProductsSlider
-          products={{
-            models: [],
-            modelName: '',
-          }}
           pagination={{
             totalCount: 0,
             pageSize: 0,
             currentPage: 0,
           }}
+          products={[]}
         />
       </Section>
     </Center>

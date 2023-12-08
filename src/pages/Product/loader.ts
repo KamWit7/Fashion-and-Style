@@ -6,7 +6,7 @@ export default (({ request, params }) => {
 
   const { id = '' } = params;
 
-  const data = API.getProductById(id);
+  const data = API.products.getById(id);
 
   const loaderData = { productData: data };
 

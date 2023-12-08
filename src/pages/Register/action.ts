@@ -4,7 +4,7 @@ import { ActionFunction } from 'react-router-dom';
 export default (async ({ request }) => {
   const formData = await request.formData();
 
-  const data = await API.signup({
+  const data = await API.auth.signup({
     name: formData.get('name'),
     surname: formData.get('surname'),
     email: formData.get('email'),

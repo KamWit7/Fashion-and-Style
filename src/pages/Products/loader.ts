@@ -3,8 +3,9 @@ import { API } from '@api';
 
 export default (({ request }) => {
   const searchParams = new URLSearchParams(new URL(request.url).search);
+  
 
-  const data = API.getProducts(searchParams);
+  const data = API.products.get(searchParams);
 
   const loaderData = { productsData: data };
 

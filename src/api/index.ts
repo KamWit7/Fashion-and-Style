@@ -20,8 +20,8 @@ if (token) {
   });
 }
 
-const productsApi = {
-  getProductById: async (id: string) => {
+const products = {
+  getById: async (id: string) => {
     const res = await fetchURL(routes.products.productId(id));
 
     if (!res.ok) {
@@ -35,7 +35,7 @@ const productsApi = {
 
     return data as { product: API.ProductType };
   },
-  getProducts: async (params?: { bestseller: true } | URLSearchParams) => {
+  get: async (params?: { bestseller: true } | URLSearchParams) => {
     let url = routes.products.default;
 
     if (params !== undefined && 'bestseller' in params) {
@@ -79,7 +79,7 @@ const modiweekApi = {
   },
 };
 
-const authApi = {
+const auth = {
   signup: async <T>(body: T) => {
     const res = await fetchURL(routes.auth.signup, {
       method: 'POST',
@@ -120,19 +120,24 @@ const authApi = {
 
 const cart = {
   get: async () => {
-    const res = await fetchURL(routes.cart.default);
+    try {
+      const res = await fetchURL(routes.cart.default);
 
-    if (!res.ok) {
-      throw {
-        message: 'Failed to get cart items',
-        statusText: res.statusText,
-        status: res.status,
-      };
+      if (!res.ok) {
+        throw {
+          message: 'Failed to get cart items',
+          statusText: res.statusText,
+          status: res.status,
+        };
+      }
+
+      const data = await res.json();
+
+      return data as API.CardType;
+    } catch (err) {
+      console.log(err);
+      return null;
     }
-
-    const data = await res.json();
-
-    return data as API.CardType;
   },
   post: async <T>(body: T) => {
     const res = await fetchURL(routes.cart.add, {
@@ -173,8 +178,8 @@ const cart = {
 };
 
 export const API = {
-  ...productsApi,
+  products,
   ...modiweekApi,
-  ...authApi,
+  auth,
   cart,
 };
