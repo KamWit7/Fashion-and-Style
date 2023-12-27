@@ -88,7 +88,7 @@ const auth = {
 
     if (!res.ok) {
       throw {
-        message: 'Failed to singup',
+        message: 'Failed to signup',
         statusText: res.statusText,
         status: res.status,
       };
@@ -139,8 +139,8 @@ const cart = {
       return null;
     }
   },
-  post: async <T>(body: T) => {
-    const res = await fetchURL(routes.cart.add, {
+  post: async (body: { productId: string; quantity?: number }) => {
+    const res = await fetchURL(routes.cart.update, {
       method: 'POST',
       body: JSON.stringify(body),
     });
@@ -157,7 +157,7 @@ const cart = {
 
     return data as API.CardType;
   },
-  delete: async <T>(body: T) => {
+  delete: async (body: { productId: string }) => {
     const res = await fetchURL(routes.cart.removeItem, {
       method: 'DELETE',
       body: JSON.stringify(body),

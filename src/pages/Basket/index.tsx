@@ -4,6 +4,7 @@ import { LoaderData } from '@src/types/loader';
 import ProductDetails from './components/ProductDetlails';
 import { Suspense } from 'react';
 import { useCart } from '@src/context/CardContext/useCart';
+import { isEmpty } from '@utils/isEmpty';
 
 const Basket = () => {
   const loaderCart = useLoaderData() as LoaderData<typeof BasketLoader>;
@@ -24,18 +25,11 @@ const Basket = () => {
           <Suspense fallback={<tr>Products...</tr>}>
             <Await resolve={loaderCart.cart}>
               {(loaderCart: API.CardType | null) => {
-                const c = loaderCart ? loaderCart.items : cart;
+                const c = isEmpty(cart) && loaderCart ? loaderCart.items : cart;
 
                 return c.map((item, idx) => (
                   <tr className="border-b bg-gray-100 text-center" key={idx}>
-                    <ProductDetails
-                      imageSrcSet={item.productId.mainImg}
-                      size={item.productId.sizes[0]}
-                      color={item.productId.colors[0]}
-                      price={item.productId.price}
-                      title={item.productId.title}
-                      total={item.quantity * item.productId.price}
-                    />
+                    <ProductDetails {...item} />
                   </tr>
                 ));
               }}

@@ -12,7 +12,7 @@ class APIRoutsManager {
       signup: '/signup',
     },
     cart: {
-      add: '/cart/add',
+      update: '/cart/update',
       default: '/cart',
       removeItem: '/cart/remove-item',
     },
