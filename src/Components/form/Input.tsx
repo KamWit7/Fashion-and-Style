@@ -1,7 +1,8 @@
 import { cn, cnJoin } from '@utils/cn';
 import React, { useId } from 'react';
 
-interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'placeholder'> {
+
+export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'placeholder'> {
   label?: string;
   icon?: ({ className, size }: { className: string; size: number }) => React.ReactNode;
   error?: string;
