@@ -16,6 +16,9 @@ class APIRoutsManager {
       default: '/cart',
       removeItem: '/cart/remove-item',
     },
+    payments: {
+      default: '/payments/secret',
+    },
   };
 
   private static instance: APIRoutsManager;

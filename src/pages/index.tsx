@@ -21,3 +21,5 @@ export { default as Products } from '@pages/Products';
 export { default as ProductsLoader } from '@src/pages/Products/loader';
 
 export { default as Profile } from '@pages/Profile';
+
+export { default as PaymentStatus } from '@pages/PaymentStatus';

@@ -59,6 +59,7 @@ const BasketForm = () => {
       {step === 'items' && <Items handleSteps={[handleNextStep, handlePreviousStep]} />}
       {step === 'shippingAddress' && <ShippingAddress handleSteps={[handleNextStep, handlePreviousStep]} />}
       {step === 'deliveryOptions' && <ShippingInfo handleSteps={[handleNextStep, handlePreviousStep]} />}
+
       {step === 'payment' && <Payment handleSteps={[handleNextStep, handlePreviousStep]} />}
     </div>
   );

@@ -2,7 +2,11 @@ import CheckboxField from '@src/Components/form/controlled/CheckboxField';
 import InputField from '@src/Components/form/controlled/InputField';
 import { useForm, FormProvider } from 'react-hook-form';
 import { HandleStepsType } from '..';
+
 import Button from '@components/Button';
+
+import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { useState } from 'react';
 
 interface AlternativeAddressFormValues {
   name: string;
@@ -19,12 +23,44 @@ interface AlternativeAddressFormValues {
 const Payment = ({ handleSteps }: HandleStepsType) => {
   const [handleNextStep, handlePreviousStep] = handleSteps;
 
+  const stripe = useStripe();
+  const elements = useElements();
+  const [errorMessage, setErrorMessage] = useState('');
+
   const methods = useForm<AlternativeAddressFormValues>();
   const { handleSubmit } = methods;
 
   const onSubmit = (data: AlternativeAddressFormValues) => {
     console.log(data);
   };
+
+  const onPaymentSubmit = async () => {
+    if (!stripe || !elements) {
+      // Stripe.js hasn't yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
+      return;
+    }
+
+    const { error } = await stripe.confirmPayment({
+      //`Elements` instance that was used to create the Payment Element
+      elements,
+      confirmParams: {
+        return_url: `${import.meta.env.VITE_URL}/basket/payment/status`,
+      },
+    });
+
+    if (error) {
+      // This point will only be reached if there is an immediate error when
+      // confirming the payment. Show error to your customer (for example, payment
+      // details incomplete)
+      setErrorMessage(error.message || '');
+    } else {
+      // Your customer will be redirected to your `return_url`. For some payment
+      // methods like iDEAL, your customer will be redirected to an intermediate
+      // site first to authorize the payment, then redirected to the `return_url`.
+    }
+  };
+
   return (
     <div>
       <FormProvider {...methods}>
@@ -48,10 +84,17 @@ const Payment = ({ handleSteps }: HandleStepsType) => {
           <InputField name="zip" label="Zip / Postcode" />
 
           <InputField name="phone" label="Phone" />
-
-          <button type="submit">Submit</button>
         </form>
       </FormProvider>
+
+      <div id="checkout">
+        <form onSubmit={handleSubmit(onPaymentSubmit)}>
+          <PaymentElement />
+          <button disabled={!stripe}>Submit</button>
+          {/* Show error message to your customers */}
+          {errorMessage && <div>{errorMessage}</div>}
+        </form>
+      </div>
       <Button onClick={handleNextStep} className="mt-8">
         Next
       </Button>
