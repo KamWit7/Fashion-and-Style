@@ -46,6 +46,17 @@ const Payment = ({ handleSteps }: HandleStepsType) => {
       elements,
       confirmParams: {
         return_url: `${import.meta.env.VITE_URL}/basket/payment/status`,
+
+        shipping: {
+          name: 'Jenny Rosen',
+          address: {
+            line1: '510 Townsend St',
+            postal_code: '98140',
+            city: 'San Francisco',
+            state: 'CA',
+            country: 'US',
+          },
+        },
       },
     });
 
@@ -87,14 +98,16 @@ const Payment = ({ handleSteps }: HandleStepsType) => {
         </form>
       </FormProvider>
 
-      <div id="checkout">
-        <form onSubmit={handleSubmit(onPaymentSubmit)}>
-          <PaymentElement />
-          <button disabled={!stripe}>Submit</button>
-          {/* Show error message to your customers */}
-          {errorMessage && <div>{errorMessage}</div>}
-        </form>
-      </div>
+      {stripe && (
+        <div id="checkout">
+          <form onSubmit={handleSubmit(onPaymentSubmit)}>
+            <PaymentElement />
+            <button disabled={!stripe}>Submit</button>
+            {/* Show error message to your customers */}
+            {errorMessage && <div>{errorMessage}</div>}
+          </form>
+        </div>
+      )}
       <Button onClick={handleNextStep} className="mt-8">
         Next
       </Button>

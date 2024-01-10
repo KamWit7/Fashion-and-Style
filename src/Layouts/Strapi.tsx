@@ -17,8 +17,9 @@ const Strapi = () => {
     getSession();
   }, []);
 
+  if (!clientSecret) return <div>Loading...</div>;
+
   const options = {
-    // passing the client secret obtained in step 3
     clientSecret,
     // Fully customizable with appearance API.
     appearance: {
@@ -26,7 +27,6 @@ const Strapi = () => {
     } as const,
   };
 
-  if (!clientSecret) return <div>Loading...</div>;
   return (
     <Elements stripe={stripePromise} options={options}>
       <Outlet />
