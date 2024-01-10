@@ -26,7 +26,8 @@ const protectedRoutes = {
           element: <Pages.Favorite />,
         },
         { path: 'saved', element: <div>Saved items</div> },
-        { path: '', element: <div>Saved items</div> },
+
+        { path: '', element: <div>default</div> },
       ],
     },
   ],
@@ -49,7 +50,18 @@ const router = createBrowserRouter([
         loader: Pages.LandingLoader,
       },
 
-      { path: 'basket', element: <Pages.Basket />, loader: Pages.BasketLoader },
+      {
+        path: 'basket',
+        element: <Layouts.Strapi />,
+        children: [
+          {
+            index: true,
+            element: <Pages.Basket />,
+            loader: Pages.BasketLoader,
+          },
+          { path: 'payment/status', element: <Pages.PaymentStatus /> },
+        ],
+      },
       {
         path: 'products',
         element: <Pages.Products />,
