@@ -177,9 +177,28 @@ const cart = {
   },
 };
 
+const payments = {
+  get: async () => {
+    const res = await fetchURL(routes.payments.default);
+
+    // if (!res.ok) {
+    //   throw {
+    //     message: 'Failed to post item',
+    //     statusText: res.statusText,
+    //     status: res.status,
+    //   };
+    // }
+
+    const { client_secret } = await res.json();
+
+    return { clientSecret: client_secret };
+  },
+};
+
 export const API = {
   products,
   ...modiweekApi,
   auth,
   cart,
+  payments,
 };
