@@ -14,6 +14,7 @@ const Products = ({ handleSteps }: HandleStepsType) => {
   const loaderCart = useLoaderData() as LoaderData<typeof BasketLoader>;
   const { cart } = useCart();
 
+  console.log('cart', loaderCart, cart);
   return (
     <div className="container mx-auto">
       <table className="min-w-full table-auto">
@@ -29,9 +30,9 @@ const Products = ({ handleSteps }: HandleStepsType) => {
           <Suspense fallback={<tr>Products...</tr>}>
             <Await resolve={loaderCart.cart}>
               {(loaderCart: API.CardType | null) => {
-                const c = isEmpty(cart) && loaderCart ? loaderCart.items : cart;
+                const c = isEmpty(cart.items) && loaderCart ? loaderCart : cart;
 
-                return c.map((item, idx) => (
+                return c.items.map((item, idx) => (
                   <tr className="border-b bg-gray-100 text-center" key={idx}>
                     <ProductDetails {...item} />
                   </tr>
@@ -41,6 +42,14 @@ const Products = ({ handleSteps }: HandleStepsType) => {
           </Suspense>
         </tbody>
       </table>
+
+      <Await resolve={loaderCart.cart}>
+        {(loaderCart: API.CardType | null) => {
+          const c = isEmpty(cart.items) && loaderCart ? loaderCart : cart;
+
+          return <div>Total:{c.total}</div>;
+        }}
+      </Await>
       <div>
         <Button onClick={handleNextStep} className="mt-8">
           Next

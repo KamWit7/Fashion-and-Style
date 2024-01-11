@@ -30,7 +30,12 @@ namespace API {
     material: MainMaterialType;
   };
 
-  type CardType = { _id: string; userId: string; items: { productId: API.ProductType; quantity: number }[] };
+  type CardType = {
+    _id: string;
+    userId: string;
+    items: { productId: API.ProductType; quantity: number }[];
+    total: number;
+  };
 
   type ModiweekType = Pick<ProductType, '_id' | 'mainImg' | 'title'>;
 }

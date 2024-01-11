@@ -17,7 +17,7 @@ class APIRoutsManager {
       removeItem: '/cart/remove-item',
     },
     payments: {
-      default: '/payments/secret',
+      default: '/payments/payment-intents',
     },
   };
 
